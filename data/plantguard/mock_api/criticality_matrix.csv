@@ -1,0 +1,4 @@
+criticality,safety_risk,environmental_impact,downtime_cost_min_inr_per_hour,downtime_cost_max_inr_per_hour,default_downtime_cost_inr_per_hour,inspection_interval_days
+A,HIGH,CRITICAL,30000,,40000,7
+B,MEDIUM,MAJOR,10000,29999,18000,30
+C,LOW,MINOR,0,9999,5000,90

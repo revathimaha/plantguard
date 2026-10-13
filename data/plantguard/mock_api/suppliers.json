@@ -1,0 +1,110 @@
+[
+  {
+    "supplier_id": "VPW-SUP-001",
+    "supplier_name": "Misra Bearings & Seals",
+    "tier": "T1",
+    "city": "Chennai",
+    "payment_terms_days": 60,
+    "on_time_delivery_pct": 97,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-002",
+    "supplier_name": "Tripathi Industrial Supplies",
+    "tier": "T1",
+    "city": "Ahmedabad",
+    "payment_terms_days": 60,
+    "on_time_delivery_pct": 94,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-003",
+    "supplier_name": "Issac Engineering Co.",
+    "tier": "T1",
+    "city": "Rajkot",
+    "payment_terms_days": 30,
+    "on_time_delivery_pct": 93,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-004",
+    "supplier_name": "Dua Hydraulics",
+    "tier": "T1",
+    "city": "Ahmedabad",
+    "payment_terms_days": 60,
+    "on_time_delivery_pct": 93,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-005",
+    "supplier_name": "Prakash Automation",
+    "tier": "T2",
+    "city": "Rajkot",
+    "payment_terms_days": 45,
+    "on_time_delivery_pct": 89,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-006",
+    "supplier_name": "Edwin Tools & Spares",
+    "tier": "T2",
+    "city": "Bengaluru",
+    "payment_terms_days": 60,
+    "on_time_delivery_pct": 85,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-007",
+    "supplier_name": "Zacharia Bearings & Seals",
+    "tier": "T2",
+    "city": "Hyderabad",
+    "payment_terms_days": 45,
+    "on_time_delivery_pct": 88,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-008",
+    "supplier_name": "Wali Industrial Supplies",
+    "tier": "T2",
+    "city": "Coimbatore",
+    "payment_terms_days": 45,
+    "on_time_delivery_pct": 88,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-009",
+    "supplier_name": "Acharya Engineering Co.",
+    "tier": "T3",
+    "city": "Faridabad",
+    "payment_terms_days": 60,
+    "on_time_delivery_pct": 75,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-010",
+    "supplier_name": "Naik Hydraulics",
+    "tier": "T3",
+    "city": "Rajkot",
+    "payment_terms_days": 30,
+    "on_time_delivery_pct": 81,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-011",
+    "supplier_name": "Suresh Automation",
+    "tier": "T3",
+    "city": "Pune",
+    "payment_terms_days": 45,
+    "on_time_delivery_pct": 79,
+    "status": "approved"
+  },
+  {
+    "supplier_id": "VPW-SUP-012",
+    "supplier_name": "Bahl Tools & Spares",
+    "tier": "T3",
+    "city": "Ahmedabad",
+    "payment_terms_days": 45,
+    "on_time_delivery_pct": 80,
+    "status": "probation"
+  }
+]

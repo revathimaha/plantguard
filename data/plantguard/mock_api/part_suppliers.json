@@ -1,0 +1,1962 @@
+[
+  {
+    "part_number": "VPW-P-00000",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00001",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00002",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00003",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00004",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00005",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00006",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00007",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00008",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00009",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00010",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00011",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00012",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00013",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00014",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00015",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00016",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00017",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00018",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00019",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00020",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00021",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00022",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00023",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00024",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00025",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00026",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00027",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00028",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00029",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00030",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00031",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00032",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00033",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00034",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00035",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00036",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00037",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00038",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00039",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00040",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00041",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00042",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00043",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00044",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 450,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00045",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00046",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00047",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00048",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00049",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00050",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00051",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00052",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00053",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00054",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00055",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00056",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00057",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00058",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00059",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00060",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00061",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00062",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00063",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00064",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00065",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00066",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00067",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00068",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00069",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00070",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 450,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00071",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00072",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00073",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00074",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00075",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00076",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00077",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00078",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00079",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00080",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00081",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00082",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00083",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00084",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00085",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 450,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00086",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00087",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00088",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00089",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 450,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00090",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 450,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00091",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00092",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00093",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00094",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00095",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00096",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 450,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00097",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 450,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00098",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00099",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00100",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00101",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00102",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00103",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00104",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00105",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00106",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00107",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00108",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00109",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00110",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00111",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00112",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00113",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00114",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00115",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00116",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00117",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00118",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00119",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00120",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00121",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00122",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00123",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00124",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00125",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00126",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00127",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00128",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00129",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00130",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00131",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 450,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00132",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00133",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00134",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00135",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00136",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00137",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00138",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 450,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00139",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00140",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00141",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00142",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00143",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00144",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00145",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00146",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00147",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00148",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 450,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00149",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00150",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00151",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00152",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00153",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00154",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00155",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00156",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00157",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00158",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00159",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00160",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00161",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00162",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00163",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00164",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00165",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00166",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 450,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00167",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00168",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00169",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00170",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00171",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00172",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00173",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00174",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00175",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00176",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00177",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00178",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00179",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00180",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00181",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00182",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00183",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00184",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00185",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00186",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00187",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00188",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 450,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00189",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00190",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00191",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00192",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00193",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00194",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00195",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00196",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00197",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00198",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00199",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00200",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00201",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00202",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00203",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00204",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00205",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00206",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00207",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00208",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00209",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00210",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 450,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00211",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00212",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00213",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00214",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00215",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00216",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00217",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00218",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00219",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00220",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00221",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00222",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00223",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00224",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00225",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00226",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00227",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00228",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00229",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00230",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00231",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 450,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00232",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00233",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00234",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00235",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00236",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00237",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00238",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00239",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00240",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00241",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00242",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00243",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00244",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00245",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00246",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00247",
+    "supplier_id": "VPW-SUP-004",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00248",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00249",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00250",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00251",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00252",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 450,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00253",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00254",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00255",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00256",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 450,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00257",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00258",
+    "supplier_id": "VPW-SUP-012",
+    "quoted_lead_time_days": 45,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00259",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00260",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00261",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 450,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00262",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00263",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00264",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 2
+  },
+  {
+    "part_number": "VPW-P-00265",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 450,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00266",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00267",
+    "supplier_id": "VPW-SUP-001",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00268",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00269",
+    "supplier_id": "VPW-SUP-003",
+    "quoted_lead_time_days": 5,
+    "unit_price_inr": 3800,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00270",
+    "supplier_id": "VPW-SUP-008",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00271",
+    "supplier_id": "VPW-SUP-006",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00272",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00273",
+    "supplier_id": "VPW-SUP-009",
+    "quoted_lead_time_days": 2,
+    "unit_price_inr": 450,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00274",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 78000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00275",
+    "supplier_id": "VPW-SUP-011",
+    "quoted_lead_time_days": 10,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 10
+  },
+  {
+    "part_number": "VPW-P-00276",
+    "supplier_id": "VPW-SUP-007",
+    "quoted_lead_time_days": 90,
+    "unit_price_inr": 1200,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00277",
+    "supplier_id": "VPW-SUP-002",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 24000,
+    "min_order_quantity": 5
+  },
+  {
+    "part_number": "VPW-P-00278",
+    "supplier_id": "VPW-SUP-005",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 210000,
+    "min_order_quantity": 1
+  },
+  {
+    "part_number": "VPW-P-00279",
+    "supplier_id": "VPW-SUP-010",
+    "quoted_lead_time_days": 21,
+    "unit_price_inr": 9500,
+    "min_order_quantity": 2
+  }
+]

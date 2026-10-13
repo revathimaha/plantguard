@@ -1,0 +1,47 @@
+[
+  {
+    "question": "What is the P1 vibration alarm threshold?",
+    "expected_sources": [
+      {
+        "source": "alarm-response.md",
+        "section": "3.0 PARAMETER THRESHOLDS BY PRIORITY"
+      }
+    ],
+    "expected_behavior": "retrieve"
+  },
+  {
+    "question": "What is the P1 temperature alarm threshold?",
+    "expected_sources": [
+      {
+        "source": "alarm-response.md",
+        "section": "3.0 PARAMETER THRESHOLDS BY PRIORITY"
+      }
+    ],
+    "expected_behavior": "retrieve"
+  },
+  {
+    "question": "What are the hazardous energy isolation requirements for the CNC mill?",
+    "expected_sources": [
+      {
+        "source": "manual-cnc-mill.md",
+        "section": "2. HAZARDOUS ENERGY ISOLATION"
+      }
+    ],
+    "expected_behavior": "retrieve"
+  },
+  {
+    "question": "What are the normal operating ranges and condition monitoring thresholds for the CNC mill?",
+    "expected_sources": [
+      {
+        "source": "manual-cnc-mill.md",
+        "section": "3. NORMAL OPERATING RANGES AND CONDITION MONITORING THRESHOLDS"
+      }
+    ],
+    "expected_behavior": "retrieve"
+  },
+  {
+    "question": "What is the exact salary of the technician responsible for CNC-MILL-03?",
+    "expected_sources": [],
+    "expected_behavior": "abstain"
+  }
+]

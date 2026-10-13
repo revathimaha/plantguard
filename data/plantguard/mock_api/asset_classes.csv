@@ -1,0 +1,9 @@
+asset_code,description,primary_skill,secondary_skill,vibration_warning_mm_s,vibration_trip_mm_s,temp_warning_c,temp_trip_c,pm_interval_hours,energy_sources,pressure_nominal_bar,pressure_low_alarm_bar
+CNC-MILL,Vertical CNC Machining Centre,Mechanical,Electrical,4.5,7.1,72,86,500,electrical;pneumatic,,
+HYD-PRESS,400-Tonne Hydraulic Press,Hydraulics,Mechanical,5.6,8.5,78,92,750,hydraulic;electrical;gravity,210.0,185.0
+CONV-BELT,Main Line Belt Conveyor,Mechanical,Electrical,7.1,11.0,70,84,1000,electrical;mechanical,,
+AIR-COMP,Rotary Screw Air Compressor,Mechanical,Instrumentation,6.3,9.5,88,102,2000,electrical;pneumatic,7.5,6.2
+IND-OVEN,Continuous Curing Oven,Electrical,Instrumentation,4.8,7.5,90,105,1500,electrical;thermal,,
+PUMP-CENT,Centrifugal Process Pump,Mechanical,Instrumentation,5.0,8.0,75,90,4000,electrical;hydraulic,4.2,3.4
+ROBOT-WELD,Six-Axis Welding Robot,Robotics,Electrical,4.6,7.3,74,88,1250,electrical;pneumatic,,
+CHILLER,Water-Cooled Process Chiller,Mechanical,Electrical,5.3,8.2,80,95,3000,electrical;refrigerant_pressure,3.0,2.4

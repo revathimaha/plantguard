@@ -1,0 +1,282 @@
+[
+  {
+    "asset_tag": "VPW-CNC-MILL-01",
+    "asset_code": "CNC-MILL",
+    "description": "Vertical CNC Machining Centre",
+    "criticality": "B",
+    "installed_on": "2023-10-08",
+    "running_hours": 50717,
+    "line": "LINE-2",
+    "last_pm_on": "2026-05-25"
+  },
+  {
+    "asset_tag": "VPW-CNC-MILL-02",
+    "asset_code": "CNC-MILL",
+    "description": "Vertical CNC Machining Centre",
+    "criticality": "C",
+    "installed_on": "2023-02-21",
+    "running_hours": 37548,
+    "line": "LINE-1",
+    "last_pm_on": "2026-04-13"
+  },
+  {
+    "asset_tag": "VPW-CNC-MILL-03",
+    "asset_code": "CNC-MILL",
+    "description": "Vertical CNC Machining Centre",
+    "criticality": "B",
+    "installed_on": "2022-11-12",
+    "running_hours": 24852,
+    "line": "LINE-3",
+    "last_pm_on": "2026-05-15"
+  },
+  {
+    "asset_tag": "VPW-CNC-MILL-04",
+    "asset_code": "CNC-MILL",
+    "description": "Vertical CNC Machining Centre",
+    "criticality": "A",
+    "installed_on": "2018-08-31",
+    "running_hours": 10877,
+    "line": "LINE-2",
+    "last_pm_on": "2026-04-02"
+  },
+  {
+    "asset_tag": "VPW-CNC-MILL-05",
+    "asset_code": "CNC-MILL",
+    "description": "Vertical CNC Machining Centre",
+    "criticality": "C",
+    "installed_on": "2018-10-07",
+    "running_hours": 53408,
+    "line": "LINE-1",
+    "last_pm_on": "2026-05-05"
+  },
+  {
+    "asset_tag": "VPW-HYD-PRESS-01",
+    "asset_code": "HYD-PRESS",
+    "description": "400-Tonne Hydraulic Press",
+    "criticality": "B",
+    "installed_on": "2022-06-07",
+    "running_hours": 11573,
+    "line": "LINE-3",
+    "last_pm_on": "2026-07-31"
+  },
+  {
+    "asset_tag": "VPW-HYD-PRESS-02",
+    "asset_code": "HYD-PRESS",
+    "description": "400-Tonne Hydraulic Press",
+    "criticality": "A",
+    "installed_on": "2015-11-03",
+    "running_hours": 32944,
+    "line": "LINE-1",
+    "last_pm_on": "2026-07-03"
+  },
+  {
+    "asset_tag": "VPW-HYD-PRESS-03",
+    "asset_code": "HYD-PRESS",
+    "description": "400-Tonne Hydraulic Press",
+    "criticality": "B",
+    "installed_on": "2019-03-09",
+    "running_hours": 7054,
+    "line": "LINE-1",
+    "last_pm_on": "2026-06-29"
+  },
+  {
+    "asset_tag": "VPW-CONV-BELT-01",
+    "asset_code": "CONV-BELT",
+    "description": "Main Line Belt Conveyor",
+    "criticality": "C",
+    "installed_on": "2023-07-05",
+    "running_hours": 1329,
+    "line": "LINE-4",
+    "last_pm_on": "2026-03-12"
+  },
+  {
+    "asset_tag": "VPW-CONV-BELT-02",
+    "asset_code": "CONV-BELT",
+    "description": "Main Line Belt Conveyor",
+    "criticality": "A",
+    "installed_on": "2018-06-22",
+    "running_hours": 8049,
+    "line": "LINE-3",
+    "last_pm_on": "2026-02-11"
+  },
+  {
+    "asset_tag": "VPW-CONV-BELT-03",
+    "asset_code": "CONV-BELT",
+    "description": "Main Line Belt Conveyor",
+    "criticality": "B",
+    "installed_on": "2024-12-01",
+    "running_hours": 41014,
+    "line": "LINE-1",
+    "last_pm_on": "2026-04-25"
+  },
+  {
+    "asset_tag": "VPW-AIR-COMP-01",
+    "asset_code": "AIR-COMP",
+    "description": "Rotary Screw Air Compressor",
+    "criticality": "A",
+    "installed_on": "2021-07-10",
+    "running_hours": 49928,
+    "line": "LINE-2",
+    "last_pm_on": "2026-05-18"
+  },
+  {
+    "asset_tag": "VPW-AIR-COMP-02",
+    "asset_code": "AIR-COMP",
+    "description": "Rotary Screw Air Compressor",
+    "criticality": "B",
+    "installed_on": "2025-01-06",
+    "running_hours": 26649,
+    "line": "LINE-2",
+    "last_pm_on": "2026-07-17"
+  },
+  {
+    "asset_tag": "VPW-IND-OVEN-01",
+    "asset_code": "IND-OVEN",
+    "description": "Continuous Curing Oven",
+    "criticality": "B",
+    "installed_on": "2022-03-21",
+    "running_hours": 34647,
+    "line": "LINE-3",
+    "last_pm_on": "2026-04-15"
+  },
+  {
+    "asset_tag": "VPW-IND-OVEN-02",
+    "asset_code": "IND-OVEN",
+    "description": "Continuous Curing Oven",
+    "criticality": "C",
+    "installed_on": "2017-05-02",
+    "running_hours": 47361,
+    "line": "LINE-4",
+    "last_pm_on": "2026-07-24"
+  },
+  {
+    "asset_tag": "VPW-IND-OVEN-03",
+    "asset_code": "IND-OVEN",
+    "description": "Continuous Curing Oven",
+    "criticality": "B",
+    "installed_on": "2018-05-22",
+    "running_hours": 66172,
+    "line": "LINE-4",
+    "last_pm_on": "2026-03-09"
+  },
+  {
+    "asset_tag": "VPW-IND-OVEN-04",
+    "asset_code": "IND-OVEN",
+    "description": "Continuous Curing Oven",
+    "criticality": "A",
+    "installed_on": "2018-08-01",
+    "running_hours": 29739,
+    "line": "LINE-3",
+    "last_pm_on": "2026-04-07"
+  },
+  {
+    "asset_tag": "VPW-PUMP-CENT-01",
+    "asset_code": "PUMP-CENT",
+    "description": "Centrifugal Process Pump",
+    "criticality": "A",
+    "installed_on": "2025-01-19",
+    "running_hours": 49667,
+    "line": "LINE-1",
+    "last_pm_on": "2026-05-25"
+  },
+  {
+    "asset_tag": "VPW-PUMP-CENT-02",
+    "asset_code": "PUMP-CENT",
+    "description": "Centrifugal Process Pump",
+    "criticality": "B",
+    "installed_on": "2023-09-24",
+    "running_hours": 63153,
+    "line": "LINE-4",
+    "last_pm_on": "2026-06-16"
+  },
+  {
+    "asset_tag": "VPW-PUMP-CENT-03",
+    "asset_code": "PUMP-CENT",
+    "description": "Centrifugal Process Pump",
+    "criticality": "A",
+    "installed_on": "2018-09-07",
+    "running_hours": 47107,
+    "line": "LINE-1",
+    "last_pm_on": "2026-03-21"
+  },
+  {
+    "asset_tag": "VPW-ROBOT-WELD-01",
+    "asset_code": "ROBOT-WELD",
+    "description": "Six-Axis Welding Robot",
+    "criticality": "B",
+    "installed_on": "2017-12-03",
+    "running_hours": 56762,
+    "line": "LINE-4",
+    "last_pm_on": "2026-04-12"
+  },
+  {
+    "asset_tag": "VPW-ROBOT-WELD-02",
+    "asset_code": "ROBOT-WELD",
+    "description": "Six-Axis Welding Robot",
+    "criticality": "C",
+    "installed_on": "2023-05-21",
+    "running_hours": 10635,
+    "line": "LINE-2",
+    "last_pm_on": "2026-03-07"
+  },
+  {
+    "asset_tag": "VPW-ROBOT-WELD-03",
+    "asset_code": "ROBOT-WELD",
+    "description": "Six-Axis Welding Robot",
+    "criticality": "C",
+    "installed_on": "2014-08-11",
+    "running_hours": 52272,
+    "line": "LINE-4",
+    "last_pm_on": "2026-05-01"
+  },
+  {
+    "asset_tag": "VPW-ROBOT-WELD-04",
+    "asset_code": "ROBOT-WELD",
+    "description": "Six-Axis Welding Robot",
+    "criticality": "C",
+    "installed_on": "2017-08-29",
+    "running_hours": 14207,
+    "line": "LINE-4",
+    "last_pm_on": "2026-03-07"
+  },
+  {
+    "asset_tag": "VPW-CHILLER-01",
+    "asset_code": "CHILLER",
+    "description": "Water-Cooled Process Chiller",
+    "criticality": "B",
+    "installed_on": "2023-12-24",
+    "running_hours": 45799,
+    "line": "LINE-4",
+    "last_pm_on": "2026-05-17"
+  },
+  {
+    "asset_tag": "VPW-CHILLER-02",
+    "asset_code": "CHILLER",
+    "description": "Water-Cooled Process Chiller",
+    "criticality": "B",
+    "installed_on": "2018-03-06",
+    "running_hours": 40340,
+    "line": "LINE-4",
+    "last_pm_on": "2026-04-07"
+  },
+  {
+    "asset_tag": "VPW-CHILLER-03",
+    "asset_code": "CHILLER",
+    "description": "Water-Cooled Process Chiller",
+    "criticality": "B",
+    "installed_on": "2014-09-19",
+    "running_hours": 7601,
+    "line": "LINE-4",
+    "last_pm_on": "2026-02-14"
+  },
+  {
+    "asset_tag": "VPW-CHILLER-04",
+    "asset_code": "CHILLER",
+    "description": "Water-Cooled Process Chiller",
+    "criticality": "A",
+    "installed_on": "2022-07-13",
+    "running_hours": 21053,
+    "line": "LINE-4",
+    "last_pm_on": "2026-06-09"
+  }
+]

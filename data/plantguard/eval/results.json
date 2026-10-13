@@ -1,0 +1,36 @@
+
+{
+  "case_id": "M8-SMOKE-001",
+  "question": "What is the spindle vibration trip setpoint for the Vertical CNC Machining Centre?",
+  "actual_output": {
+    "status": "completed",
+    "approval_required": false,
+    "recommendation": {
+      "summary": "The spindle vibration trip setpoint for the Vertical CNC Machining Centre (CNC-MILL-01) is 7.1 mm/s RMS.",
+      "evidence": [
+        {
+          "source": "manual-cnc-mill.md Table 3.1",
+          "details": "Spindle Vibration Trip Setpoint: 7.1 mm/s RMS"
+        },
+        {
+          "source": "manual-cnc-mill.md Table 3.1",
+          "details": "Trip triggers immediate hardware emergency stop with servo and spindle power cut within 120 ms"
+        }
+      ]
+    },
+    "safety_review": {
+      "status": "review_passed",
+      "safety_critical": false,
+      "evidence_missing": false,
+      "execution_authorized": false
+    },
+    "interrupt": false
+  },
+  "observations": {
+    "workflow_completed": true,
+    "supporting_evidence_returned": true,
+    "automatic_maintenance_execution": false,
+    "langfuse_cloud_export": "failed_dns"
+  },
+  "evaluation_scope": "One factual smoke test; not the 20-case golden evaluation."
+}

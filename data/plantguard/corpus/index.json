@@ -1,0 +1,106 @@
+[
+  {
+    "slug": "lockout-tagout",
+    "title": "Lockout/Tagout and Energy Isolation Standard",
+    "section": "safety",
+    "markdown": "corpus/markdown/lockout-tagout.md",
+    "pdf": "corpus/pdf/lockout-tagout.pdf",
+    "chars": 6967
+  },
+  {
+    "slug": "permit-to-work",
+    "title": "Permit to Work and Safety-Critical Task Standard",
+    "section": "safety",
+    "markdown": "corpus/markdown/permit-to-work.md",
+    "pdf": "corpus/pdf/permit-to-work.pdf",
+    "chars": 8302
+  },
+  {
+    "slug": "maintenance-planning",
+    "title": "Preventive Maintenance Planning Standard",
+    "section": "operations",
+    "markdown": "corpus/markdown/maintenance-planning.md",
+    "pdf": "corpus/pdf/maintenance-planning.pdf",
+    "chars": 5582
+  },
+  {
+    "slug": "spares-procurement",
+    "title": "Spare Parts and Procurement Policy",
+    "section": "supply_chain",
+    "markdown": "corpus/markdown/spares-procurement.md",
+    "pdf": "corpus/pdf/spares-procurement.pdf",
+    "chars": 6175
+  },
+  {
+    "slug": "alarm-response",
+    "title": "Alarm Response and Escalation Procedure",
+    "section": "operations",
+    "markdown": "corpus/markdown/alarm-response.md",
+    "pdf": "corpus/pdf/alarm-response.pdf",
+    "chars": 5148
+  },
+  {
+    "slug": "manual-cnc-mill",
+    "title": "Vertical CNC Machining Centre (CNC-MILL) Equipment Manual and SOP",
+    "section": "equipment_manual",
+    "markdown": "corpus/markdown/manual-cnc-mill.md",
+    "pdf": "corpus/pdf/manual-cnc-mill.pdf",
+    "chars": 8418
+  },
+  {
+    "slug": "manual-hyd-press",
+    "title": "400-Tonne Hydraulic Press (HYD-PRESS) Equipment Manual and SOP",
+    "section": "equipment_manual",
+    "markdown": "corpus/markdown/manual-hyd-press.md",
+    "pdf": "corpus/pdf/manual-hyd-press.pdf",
+    "chars": 8136
+  },
+  {
+    "slug": "manual-conv-belt",
+    "title": "Main Line Belt Conveyor (CONV-BELT) Equipment Manual and SOP",
+    "section": "equipment_manual",
+    "markdown": "corpus/markdown/manual-conv-belt.md",
+    "pdf": "corpus/pdf/manual-conv-belt.pdf",
+    "chars": 9645
+  },
+  {
+    "slug": "manual-air-comp",
+    "title": "Rotary Screw Air Compressor (AIR-COMP) Equipment Manual and SOP",
+    "section": "equipment_manual",
+    "markdown": "corpus/markdown/manual-air-comp.md",
+    "pdf": "corpus/pdf/manual-air-comp.pdf",
+    "chars": 8850
+  },
+  {
+    "slug": "manual-ind-oven",
+    "title": "Continuous Curing Oven (IND-OVEN) Equipment Manual and SOP",
+    "section": "equipment_manual",
+    "markdown": "corpus/markdown/manual-ind-oven.md",
+    "pdf": "corpus/pdf/manual-ind-oven.pdf",
+    "chars": 10260
+  },
+  {
+    "slug": "manual-pump-cent",
+    "title": "Centrifugal Process Pump (PUMP-CENT) Equipment Manual and SOP",
+    "section": "equipment_manual",
+    "markdown": "corpus/markdown/manual-pump-cent.md",
+    "pdf": "corpus/pdf/manual-pump-cent.pdf",
+    "chars": 8542
+  },
+  {
+    "slug": "manual-robot-weld",
+    "title": "Six-Axis Welding Robot (ROBOT-WELD) Equipment Manual and SOP",
+    "section": "equipment_manual",
+    "markdown": "corpus/markdown/manual-robot-weld.md",
+    "pdf": "corpus/pdf/manual-robot-weld.pdf",
+    "chars": 8947
+  },
+  {
+    "slug": "manual-chiller",
+    "title": "Water-Cooled Process Chiller (CHILLER) Equipment Manual and SOP",
+    "section": "equipment_manual",
+    "markdown": "corpus/markdown/manual-chiller.md",
+    "pdf": "corpus/pdf/manual-chiller.pdf",
+    "chars": 8605
+  }
+]

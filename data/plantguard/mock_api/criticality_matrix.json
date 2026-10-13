@@ -1,0 +1,29 @@
+[
+  {
+    "criticality": "A",
+    "safety_risk": "HIGH",
+    "environmental_impact": "CRITICAL",
+    "downtime_cost_min_inr_per_hour": 30000,
+    "downtime_cost_max_inr_per_hour": null,
+    "default_downtime_cost_inr_per_hour": 40000,
+    "inspection_interval_days": 7
+  },
+  {
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_min_inr_per_hour": 10000,
+    "downtime_cost_max_inr_per_hour": 29999,
+    "default_downtime_cost_inr_per_hour": 18000,
+    "inspection_interval_days": 30
+  },
+  {
+    "criticality": "C",
+    "safety_risk": "LOW",
+    "environmental_impact": "MINOR",
+    "downtime_cost_min_inr_per_hour": 0,
+    "downtime_cost_max_inr_per_hour": 9999,
+    "default_downtime_cost_inr_per_hour": 5000,
+    "inspection_interval_days": 90
+  }
+]

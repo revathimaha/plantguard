@@ -1,0 +1,226 @@
+[
+  {
+    "asset_tag": "VPW-CNC-MILL-01",
+    "criticality": "B",
+    "safety_risk": "LOW",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 23000,
+    "governing_factor": "environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-CNC-MILL-02",
+    "criticality": "C",
+    "safety_risk": "LOW",
+    "environmental_impact": "MINOR",
+    "downtime_cost_per_hour_inr": 4000,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-CNC-MILL-03",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 22500,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-CNC-MILL-04",
+    "criticality": "A",
+    "safety_risk": "HIGH",
+    "environmental_impact": "CRITICAL",
+    "downtime_cost_per_hour_inr": 59000,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-CNC-MILL-05",
+    "criticality": "C",
+    "safety_risk": "LOW",
+    "environmental_impact": "MINOR",
+    "downtime_cost_per_hour_inr": 8500,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-HYD-PRESS-01",
+    "criticality": "B",
+    "safety_risk": "LOW",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 24500,
+    "governing_factor": "environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-HYD-PRESS-02",
+    "criticality": "A",
+    "safety_risk": "HIGH",
+    "environmental_impact": "MINOR",
+    "downtime_cost_per_hour_inr": 40000,
+    "governing_factor": "safety_risk;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-HYD-PRESS-03",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 10500,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-CONV-BELT-01",
+    "criticality": "C",
+    "safety_risk": "LOW",
+    "environmental_impact": "MINOR",
+    "downtime_cost_per_hour_inr": 6500,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-CONV-BELT-02",
+    "criticality": "A",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "CRITICAL",
+    "downtime_cost_per_hour_inr": 4000,
+    "governing_factor": "environmental_impact"
+  },
+  {
+    "asset_tag": "VPW-CONV-BELT-03",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 25500,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-AIR-COMP-01",
+    "criticality": "A",
+    "safety_risk": "LOW",
+    "environmental_impact": "CRITICAL",
+    "downtime_cost_per_hour_inr": 55500,
+    "governing_factor": "environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-AIR-COMP-02",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MINOR",
+    "downtime_cost_per_hour_inr": 20500,
+    "governing_factor": "safety_risk;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-IND-OVEN-01",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 27000,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-IND-OVEN-02",
+    "criticality": "C",
+    "safety_risk": "LOW",
+    "environmental_impact": "MINOR",
+    "downtime_cost_per_hour_inr": 8500,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-IND-OVEN-03",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 16500,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-IND-OVEN-04",
+    "criticality": "A",
+    "safety_risk": "HIGH",
+    "environmental_impact": "CRITICAL",
+    "downtime_cost_per_hour_inr": 2500,
+    "governing_factor": "safety_risk;environmental_impact"
+  },
+  {
+    "asset_tag": "VPW-PUMP-CENT-01",
+    "criticality": "A",
+    "safety_risk": "HIGH",
+    "environmental_impact": "CRITICAL",
+    "downtime_cost_per_hour_inr": 5000,
+    "governing_factor": "safety_risk;environmental_impact"
+  },
+  {
+    "asset_tag": "VPW-PUMP-CENT-02",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 12000,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-PUMP-CENT-03",
+    "criticality": "A",
+    "safety_risk": "HIGH",
+    "environmental_impact": "CRITICAL",
+    "downtime_cost_per_hour_inr": 3500,
+    "governing_factor": "safety_risk;environmental_impact"
+  },
+  {
+    "asset_tag": "VPW-ROBOT-WELD-01",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 29000,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-ROBOT-WELD-02",
+    "criticality": "C",
+    "safety_risk": "LOW",
+    "environmental_impact": "MINOR",
+    "downtime_cost_per_hour_inr": 2000,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-ROBOT-WELD-03",
+    "criticality": "C",
+    "safety_risk": "LOW",
+    "environmental_impact": "MINOR",
+    "downtime_cost_per_hour_inr": 6500,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-ROBOT-WELD-04",
+    "criticality": "C",
+    "safety_risk": "LOW",
+    "environmental_impact": "MINOR",
+    "downtime_cost_per_hour_inr": 8500,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-CHILLER-01",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 24000,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-CHILLER-02",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MAJOR",
+    "downtime_cost_per_hour_inr": 22000,
+    "governing_factor": "safety_risk;environmental_impact;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-CHILLER-03",
+    "criticality": "B",
+    "safety_risk": "MEDIUM",
+    "environmental_impact": "MINOR",
+    "downtime_cost_per_hour_inr": 17500,
+    "governing_factor": "safety_risk;downtime_cost"
+  },
+  {
+    "asset_tag": "VPW-CHILLER-04",
+    "criticality": "A",
+    "safety_risk": "LOW",
+    "environmental_impact": "CRITICAL",
+    "downtime_cost_per_hour_inr": 6000,
+    "governing_factor": "environmental_impact"
+  }
+]

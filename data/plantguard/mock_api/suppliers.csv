@@ -1,0 +1,13 @@
+supplier_id,supplier_name,tier,city,payment_terms_days,on_time_delivery_pct,status
+VPW-SUP-001,Misra Bearings & Seals,T1,Chennai,60,97,approved
+VPW-SUP-002,Tripathi Industrial Supplies,T1,Ahmedabad,60,94,approved
+VPW-SUP-003,Issac Engineering Co.,T1,Rajkot,30,93,approved
+VPW-SUP-004,Dua Hydraulics,T1,Ahmedabad,60,93,approved
+VPW-SUP-005,Prakash Automation,T2,Rajkot,45,89,approved
+VPW-SUP-006,Edwin Tools & Spares,T2,Bengaluru,60,85,approved
+VPW-SUP-007,Zacharia Bearings & Seals,T2,Hyderabad,45,88,approved
+VPW-SUP-008,Wali Industrial Supplies,T2,Coimbatore,45,88,approved
+VPW-SUP-009,Acharya Engineering Co.,T3,Faridabad,60,75,approved
+VPW-SUP-010,Naik Hydraulics,T3,Rajkot,30,81,approved
+VPW-SUP-011,Suresh Automation,T3,Pune,45,79,approved
+VPW-SUP-012,Bahl Tools & Spares,T3,Ahmedabad,45,80,probation

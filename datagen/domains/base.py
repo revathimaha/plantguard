@@ -1,0 +1,657 @@
+"""The contract every domain generator satisfies.
+
+Each of the five capstones needs the same four asset classes, which is what
+lets one toolkit serve all of them and one rubric grade all of them:
+
+  A. RAG corpus        -> the documents M3 indexes and M4 retrieves over
+  B. Intake records    -> the raw inputs M1 parses into Pydantic objects
+  C. Mock API tables   -> the state M2 tools read and M6 exposes over MCP
+  D. Golden eval set   -> the 20 graded cases M8 scores against, adversarial
+                          cases included
+
+A domain module is mostly declarative: it supplies prompts, a schema sketch,
+and a seed-table spec. The runner does the rest.
+"""
+
+from __future__ import annotations
+
+import json
+import random
+import re
+from abc import ABC, abstractmethod
+from datetime import date, datetime, timedelta
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any
+
+from faker import Faker
+
+#: Frozen "now" for all generated dates. Change it and every relative date
+#: in every domain shifts together, which is usually not what you want.
+REFERENCE_NOW = datetime(2026, 8, 1, 9, 0)
+
+from ..config import settings
+from ..grounding import GROUNDED_CATEGORIES, canonical_title, is_grounded, read_corpus
+from ..llm import ContentBlocked, LLMError, complete, complete_json
+from ..writers import (
+    ensure_dir,
+    write_csv,
+    write_json,
+    write_jsonl,
+    write_markdown,
+    write_pdf,
+)
+
+
+def as_number(value: Any) -> float | None:
+    """A figure however a model wrote it: 34000, "34,000", "Rs. 34,000", "34k".
+
+    Returns None when there is no number to read. Booleans are not numbers.
+    """
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        return value if abs(value) < 1e15 else None
+    if isinstance(value, str):
+        found = re.search(r"(\d[\d,]{0,20}(?:\.\d{1,6})?)\s*([kK])?\b", value)
+        if found:
+            number = float(found.group(1).replace(",", ""))
+            return number * 1_000 if found.group(2) else number
+    return None
+
+
+@dataclass
+class DocSpec:
+    """One document in the RAG corpus."""
+
+    slug: str
+    title: str
+    section: str
+    instruction: str
+
+
+@dataclass
+class EvalCase:
+    """One graded case in the golden eval set.
+
+    `category` drives partial-credit scoring in M8. The adversarial categories
+    are the point: a system that scores well on `factual` and collapses on
+    `injection` has not been evaluated, it has been flattered.
+    """
+
+    id: str
+    question: str
+    expected: str
+    category: str  # factual | multi_hop | unanswerable | injection | guardrail
+    # must_not_contain is substring-matched against the system's answer, so
+    # every entry must be a phrase only a WRONG answer would contain. Never
+    # list a word a correct refusal would naturally echo from the question
+    # ("suppress", "enforceable", "approved") -- that fails the right answer.
+    must_cite: list[str] = field(default_factory=list)
+    must_not_contain: list[str] = field(default_factory=list)
+    expected_route: str = "auto"  # auto | human_review | refuse
+
+
+class DomainSpec(ABC):
+    """Base class for a capstone domain generator."""
+
+    #: Short identifier, used as the output subdirectory name.
+    key: str
+    #: Human-readable capstone name.
+    name: str
+    #: Persona the generating model adopts when writing corpus documents.
+    author_persona: str
+    #: Public datasets this domain's schemas were grounded against.
+    public_sources: list[dict[str, str]] = []
+    #: Categories the Data Sourcing Guide promises for this domain's eval set.
+    #: build_eval_set warns when the model returns none of one.
+    required_eval_categories: tuple[str, ...] = (
+        "factual",
+        "guardrail",
+        "unanswerable",
+    )
+    #: Top-level fields intake_prompt() asks for in every record, and the keys
+    #: of its ground_truth object. Declared so `tests.validate_data` can check
+    #: generated records against them; a regression test keeps them in step
+    #: with the prompt.
+    intake_fields: tuple[str, ...] = ()
+    intake_truth_fields: tuple[str, ...] = ()
+    #: References the "first column is the key" rule cannot see, as
+    #: {"table.column": "table.column"}. Checked by the regression suite and by
+    #: tests.validate_data, so an ID that points at nothing is caught.
+    references: dict[str, str] = {}
+    #: The intake field naming the table row a record is about (an order, an
+    #: application). Set it where two records about one row would be a
+    #: duplicate; leave it None where repeats are natural.
+    intake_key: str | None = None
+
+    def __init__(self) -> None:
+        self.rng = random.Random(settings.seed)
+        self.faker = Faker()
+        Faker.seed(settings.seed)
+        self._tables: dict[str, list[dict[str, Any]]] | None = None
+
+    # ---------- private randomness for tables added after v1.0.0 ----------
+    #
+    # A table added in a later version must not draw from self.rng or
+    # self.faker: that would shift the stream behind the original tables and
+    # change every team's existing data. Each table group gets its own stream,
+    # so adding another one later cannot reshuffle these either.
+
+    def stream(self, name: str) -> random.Random:
+        return random.Random(f"{self.key}:{name}:{settings.seed}")
+
+    def private_faker(self, locale: str = "en_US") -> Faker:
+        fk = Faker(locale)
+        fk.seed_instance(settings.seed)
+        return fk
+
+    @staticmethod
+    def add_business_days(start: date, days: int) -> date:
+        """`days` working days after `start`, skipping Saturdays and Sundays."""
+        day = start
+        while days > 0:
+            day += timedelta(days=1)
+            if day.weekday() < 5:
+                days -= 1
+        return day
+
+    # ---------- deterministic dates ----------
+    #
+    # Faker's relative-date helpers resolve against the wall clock, so two runs
+    # of the same seed on different days produce different data. Everything
+    # here is anchored to a frozen reference instead, which is what makes
+    # "same seed, same corpus, one rubric" actually true.
+
+    def _offset(self, token: str) -> timedelta:
+        token = token.strip().lower()
+        if token in ("now", "today", "0"):
+            return timedelta(0)
+        sign = -1 if token.startswith("-") else 1
+        value = int("".join(ch for ch in token if ch.isdigit()))
+        unit = token[-1]
+        days = {"d": 1, "w": 7, "m": 30, "y": 365}[unit]
+        return timedelta(days=sign * value * days)
+
+    def dt_between(self, start: str, end: str = "now") -> datetime:
+        """Deterministic stand-in for Faker.date_time_between."""
+        lo = REFERENCE_NOW + self._offset(start)
+        hi = REFERENCE_NOW + self._offset(end)
+        if hi < lo:
+            lo, hi = hi, lo
+        span = int((hi - lo).total_seconds())
+        return lo + timedelta(seconds=self.rng.randint(0, max(span, 1)))
+
+    def d_between(self, start: str, end: str = "today") -> date:
+        return self.dt_between(start, end).date()
+
+    def dob(self, minimum_age: int = 18, maximum_age: int = 88) -> date:
+        days = self.rng.randint(minimum_age * 365, maximum_age * 365)
+        return (REFERENCE_NOW - timedelta(days=days)).date()
+
+    # ---------- Asset A: RAG corpus ----------
+
+    @abstractmethod
+    def doc_specs(self) -> list[DocSpec]:
+        """Return the document plan for the RAG corpus."""
+
+    def corpus_system_prompt(self) -> str:
+        return (
+            f"{self.author_persona}\n\n"
+            "Write in the flat, clause-numbered register of a real internal "
+            "policy document. Include specific numbers, thresholds, deadlines "
+            "and named exceptions -- vague documents make retrieval evaluation "
+            "meaningless because every chunk looks equally relevant. Never "
+            "hedge with 'may vary' where a real document would state a figure. "
+            "Use only invented organisation and person names. Do not reproduce "
+            "text from any real published policy, standard, or regulation."
+        )
+
+    def planned_docs(self) -> list[DocSpec]:
+        """The document plan actually used, honouring --corpus-docs.
+
+        v1.0.0 built every spec regardless of the cap, so `--corpus-docs 4`
+        silently generated the full set and burned the quota it was meant to
+        save.
+        """
+        return self.doc_specs()[: settings.corpus_docs]
+
+    def build_corpus(self, out_dir: Path) -> dict[str, Any]:
+        docs_dir = ensure_dir(out_dir / "corpus")
+        md_dir = ensure_dir(docs_dir / "markdown")
+        pdf_dir = ensure_dir(docs_dir / "pdf")
+        index: list[dict[str, Any]] = []
+        skipped: list[str] = []
+        blocked: list[str] = []
+
+        for spec in self.planned_docs():
+            md_path = md_dir / f"{spec.slug}.md"
+            pdf_path = pdf_dir / f"{spec.slug}.pdf"
+
+            # Resume. A run that dies at document 40 of 50 should cost 10 more
+            # calls on retry, not 50.
+            if settings.resume and md_path.exists() and pdf_path.exists():
+                skipped.append(spec.slug)
+                index.append(self._index_entry(spec, len(md_path.read_text("utf-8"))))
+                continue
+
+            try:
+                body = complete(
+                    self.corpus_instruction(spec),
+                    system=self.corpus_system_prompt(),
+                    temperature=0.85,
+                )
+            except ContentBlocked as exc:
+                # Skip and keep going. One refused document must not destroy a
+                # long run, but the user has to be told which one.
+                blocked.append(f"{spec.slug} ({exc})")
+                continue
+
+            write_markdown(md_path, spec.title, body)
+            write_pdf(pdf_path, spec.title, body)
+            index.append(self._index_entry(spec, len(body)))
+
+        write_json(docs_dir / "index.json", index)
+        result: dict[str, Any] = {"count": len(index), "index": "corpus/index.json"}
+        if skipped:
+            result["resumed"] = len(skipped)
+        if blocked:
+            result["blocked"] = blocked
+        return result
+
+    def corpus_instruction(self, spec: DocSpec) -> str:
+        """The prompt actually sent for one document.
+
+        Override to append facts that live in the mock API tables (part
+        numbers, IDs) so a document cannot cite something the tools cannot
+        find. Kept out of doc_specs() because that runs on --dry-run and for
+        the plan header, and must stay free of table builds.
+        """
+        return spec.instruction
+
+    def _index_entry(self, spec: DocSpec, chars: int) -> dict[str, Any]:
+        return {
+            "slug": spec.slug,
+            "title": spec.title,
+            "section": spec.section,
+            "markdown": f"corpus/markdown/{spec.slug}.md",
+            "pdf": f"corpus/pdf/{spec.slug}.pdf",
+            "chars": chars,
+        }
+
+    # ---------- Asset B: intake records ----------
+
+    @abstractmethod
+    def intake_prompt(self, batch_size: int) -> str:
+        """Prompt that yields a JSON array of raw intake records."""
+
+    def intake_sample(self, pool: list[Any], size: int) -> list[Any]:
+        """`size` rows of `pool` for one intake batch.
+
+        Rows come from one shuffled order, and a row already written about
+        (its `intake_key` is in a record on disk or accepted this run) is
+        passed over. Two records therefore never describe the same order or
+        application until the whole pool has been used, across short batches
+        and resumed runs alike.
+        """
+        order = self.__dict__.get("_intake_order")
+        if order is None or len(order) != len(pool):
+            order = list(range(len(pool)))
+            self.stream("intake").shuffle(order)
+            self._intake_order = order
+        used = self.__dict__.setdefault("_intake_used", set())
+        start = self.__dict__.get("_intake_cursor", 0)
+        want, chosen, step = min(size, len(pool)), [], 0
+        while len(chosen) < want and step < 2 * len(order):
+            if step == len(order):
+                used.clear()  # every row has been written about: go round again
+            row = pool[order[(start + step) % len(order)]]
+            step += 1
+            if self.intake_key and row[self.intake_key] in used:
+                continue
+            if row not in chosen:
+                chosen.append(row)
+        self._intake_cursor = start + step
+        return chosen
+
+    def finalize_intake_record(self, record: dict[str, Any]) -> dict[str, Any]:
+        """Last word on one intake record before it is written.
+
+        Override where the record's labels can be computed rather than
+        trusted: a model asked for "internally consistent financials" and a
+        DSCR to match will get the arithmetic wrong, and a parser is then
+        graded against a wrong answer.
+        """
+        return record
+
+    def build_intake(self, out_dir: Path) -> dict[str, Any]:
+        target = settings.intake_records
+        batch = 20
+        path = out_dir / "intake" / "records.jsonl"
+        rows: list[dict[str, Any]] = []
+        # Resume. Intake is ~10 calls; losing 180 records to one 429 on the
+        # last batch is exactly the failure a free-tier run hits.
+        if settings.resume and path.exists():
+            rows = [
+                json.loads(line)
+                for line in path.read_text("utf-8").splitlines()
+                if line.strip()
+            ]
+            if rows:
+                print(f"      resuming intake: {min(len(rows), target)} of {target} "
+                      f"records already on disk")
+        resumed = min(len(rows), target)
+        # see intake_sample
+        self._intake_cursor = len(rows)
+        self._intake_used = {
+            r[self.intake_key] for r in rows
+            if self.intake_key and isinstance(r.get(self.intake_key), str)
+        }
+        attempts = 0
+        empty_streak = 0
+
+        # v1.0.0 looped `while len(rows) < target` with no exit. A model that
+        # returns an empty array -- safety filter, malformed JSON, a bad free
+        # tier day -- spun forever and burned the entire quota. Every loop that
+        # depends on a model returning something needs a hard ceiling.
+        max_attempts = max(settings.max_intake_attempts, (target // batch) * 3)
+
+        while len(rows) < target and attempts < max_attempts:
+            attempts += 1
+            want = min(batch, target - len(rows))
+            base_index = len(rows)  # capture before appending; v1.0.0 used
+            # len(rows)+i while appending inside the loop, so IDs skipped
+            # every other integer.
+            try:
+                got = complete_json(
+                    self.intake_prompt(want),
+                    system=(
+                        "You generate realistic synthetic operational records for "
+                        "software testing. Vary register, length, typos, and "
+                        "completeness -- perfectly formed inputs teach nothing. "
+                        "Roughly one in six records should be missing a field a "
+                        "downstream parser needs."
+                    ),
+                )
+            except ContentBlocked as exc:
+                print(f"      intake batch refused by provider: {exc}")
+                empty_streak += 1
+                if empty_streak >= 3:
+                    break
+                continue
+            except LLMError:
+                write_jsonl(path, rows[:target])  # keep what we have
+                print(f"      intake interrupted; {len(rows)} records saved, "
+                      f"re-run to continue")
+                raise
+
+            if isinstance(got, dict):
+                got = got.get("records", [])
+
+            added = 0
+            for rec in got or []:
+                if isinstance(rec, dict):
+                    try:
+                        rec = self.finalize_intake_record(rec)
+                    except (KeyError, TypeError, ValueError, AttributeError, ArithmeticError):
+                        pass  # a malformed record is kept as the model wrote it
+                    subject = rec.get(self.intake_key) if self.intake_key else None
+                    if isinstance(subject, str):
+                        if subject in self._intake_used:
+                            continue  # the model wrote about the same row twice
+                        self._intake_used.add(subject)
+                    rec.setdefault(
+                        "record_id", f"{self.key.upper()}-{base_index + added:05d}"
+                    )
+                    rows.append(rec)
+                    added += 1
+
+            if added:
+                write_jsonl(path, rows[:target])  # checkpoint every batch
+
+            if added == 0:
+                empty_streak += 1
+                if empty_streak >= 3:
+                    print(
+                        "      three consecutive empty batches; stopping early "
+                        "rather than looping."
+                    )
+                    break
+            else:
+                empty_streak = 0
+
+        rows = rows[:target]
+        write_jsonl(path, rows)
+
+        result: dict[str, Any] = {
+            "count": len(rows),
+            "path": "intake/records.jsonl",
+            "llm_calls": attempts,
+        }
+        if resumed:
+            result["resumed"] = resumed
+        if len(rows) < target:
+            result["shortfall"] = target - len(rows)
+            print(
+                f"      WARNING: produced {len(rows)} of {target} intake records "
+                f"in {attempts} attempts. Re-run to top up, or lower --intake."
+            )
+        return result
+
+    # ---------- Asset C: mock API seed tables ----------
+
+    @abstractmethod
+    def seed_tables(self) -> dict[str, list[dict[str, Any]]]:
+        """Deterministic tables backing the mock tool APIs."""
+
+    #: Table names, declared so the CLI can display them without building
+    #: 20,000 rows just to print a header line.
+    table_names: tuple[str, ...] = ()
+
+    def cached_seed_tables(self) -> dict[str, list[dict[str, Any]]]:
+        """Build the seed tables once per run.
+
+        v1.0.0 called seed_tables() twice -- once for a display line, once for
+        the real build -- so the written data came from the *second* RNG draw.
+        Caching alone would therefore change everyone's output, so by default
+        we reproduce that discarded first draw. Pass --fresh-table-rng for the
+        clean single-draw behaviour on a new project.
+        """
+        if self._tables is None:
+            if settings.legacy_table_rng:
+                self.seed_tables()  # discarded; preserves v1.0.0 byte output
+            self._tables = self.seed_tables()
+            if not settings.legacy_table_rng:
+                self._tables = self.reconcile_tables(self._tables)
+        return self._tables
+
+    def reconcile_tables(
+        self, tables: dict[str, list[dict[str, Any]]]
+    ) -> dict[str, list[dict[str, Any]]]:
+        """Make cross-table facts agree with each other and with the corpus.
+
+        v1.0.x drew every column independently, so the mock APIs contradicted
+        themselves (declined loans with approved amounts, auto-approved
+        refunds far above the automated cap, completed appointments in the
+        future). An agent reading those tools learns nothing, and a grader
+        cannot tell a wrong answer from wrong data. Applied only with
+        --fresh-table-rng so existing teams keep byte-identical tables.
+        Must not draw from self.rng.
+        """
+        return tables
+
+    def build_seed_tables(self, out_dir: Path) -> dict[str, Any]:
+        tables_dir = ensure_dir(out_dir / "mock_api")
+        summary: dict[str, int] = {}
+        for name, rows in self.cached_seed_tables().items():
+            write_csv(tables_dir / f"{name}.csv", rows)
+            write_json(tables_dir / f"{name}.json", rows)
+            summary[name] = len(rows)
+        return {"tables": summary, "dir": "mock_api/"}
+
+    # ---------- Asset D: golden eval set ----------
+
+    @abstractmethod
+    def eval_prompt(self, n: int) -> str:
+        """Prompt that yields graded eval cases grounded in the corpus."""
+
+    @abstractmethod
+    def handwritten_eval_cases(self) -> list[EvalCase]:
+        """Adversarial cases written by hand, not by a model.
+
+        A model asked to attack its own corpus produces polite attacks. The
+        cases that actually break your system are written by a person who
+        wants it to fail.
+        """
+
+    def build_eval_set(self, out_dir: Path, corpus_titles: list[str]) -> dict[str, Any]:
+        path = out_dir / "eval" / "golden_set.json"
+        if settings.resume and path.exists():
+            try:
+                existing = json.loads(path.read_text("utf-8"))
+            except json.JSONDecodeError:
+                existing = []
+            if isinstance(existing, list) and len(existing) >= settings.eval_items:
+                by_cat: dict[str, int] = {}
+                for c in existing:
+                    by_cat[c.get("category", "?")] = by_cat.get(c.get("category", "?"), 0) + 1
+                print("      eval set already on disk; skipping (use --no-resume to rebuild)")
+                return {"count": len(existing), "by_category": by_cat,
+                        "path": "eval/golden_set.json", "resumed": True}
+
+        hand = self.handwritten_eval_cases()
+        need = max(0, settings.eval_items - len(hand))
+        generated: list[EvalCase] = []
+        dropped = 0
+
+        # The documents themselves, not just their titles. Without them the
+        # model invents the "specific number" it is asked to test for.
+        corpus = read_corpus(
+            out_dir / "corpus", {d.slug: d.title for d in self.doc_specs()}
+        )
+        titles = list(corpus) or corpus_titles
+        if need and not corpus:
+            print("      eval set: no corpus on disk, so the model-written cases "
+                  "cannot be checked against it. Generate the corpus, then run "
+                  "--only eval --no-resume.")
+
+        if need:
+            # Ask for a few spare cases: those whose answer is not in the
+            # corpus are discarded below.
+            prompt = self.eval_prompt(need + (4 if corpus else 0)).replace(
+                "{{CORPUS_TITLES}}", "\n".join(f"- {t}" for t in titles)
+            )
+            raw = complete_json(
+                prompt + self._corpus_block(corpus),
+                system=(
+                    "You write evaluation cases for a retrieval-augmented "
+                    "system. Every expected answer must be answerable from the "
+                    "listed documents alone, except where the category is "
+                    "'unanswerable', in which case the correct behaviour is an "
+                    "explicit refusal to answer."
+                ),
+            )
+            if isinstance(raw, dict):
+                raw = raw.get("cases", [])
+            for case in raw or []:
+                if not isinstance(case, dict):
+                    continue
+                category = str(case.get("category", "factual"))
+                expected = str(case.get("expected", "")).strip()
+                cites = [str(t) for t in case.get("must_cite", []) or []]
+                if corpus:
+                    # Repair paraphrased titles; drop citations of documents
+                    # that do not exist.
+                    cites = [c for c in (canonical_title(t, titles) for t in cites) if c]
+                    if category in GROUNDED_CATEGORIES:
+                        texts = [corpus[t] for t in cites] or list(corpus.values())
+                        if is_grounded(expected, texts) is False:
+                            dropped += 1
+                            continue
+                generated.append(
+                    EvalCase(
+                        id=f"{self.key.upper()}-EV-{len(hand)+len(generated)+1:03d}",
+                        question=str(case.get("question", "")).strip(),
+                        expected=expected,
+                        category=category,
+                        must_cite=cites,
+                        must_not_contain=list(case.get("must_not_contain", []) or []),
+                        expected_route=str(case.get("expected_route", "auto")),
+                    )
+                )
+
+        cases = hand + generated[:need]
+        payload = [c.__dict__ for c in cases]
+        write_json(path, payload)
+
+        by_cat: dict[str, int] = {}
+        for c in cases:
+            by_cat[c.category] = by_cat.get(c.category, 0) + 1
+
+        result: dict[str, Any] = {
+            "count": len(cases),
+            "by_category": by_cat,
+            "path": "eval/golden_set.json",
+            "grounded_in_corpus": bool(corpus),
+        }
+        if dropped:
+            result["dropped_ungrounded"] = dropped
+            print(f"      eval set: discarded {dropped} case(s) whose expected "
+                  f"answer is not in the cited document.")
+        if len(cases) < settings.eval_items:
+            result["shortfall"] = settings.eval_items - len(cases)
+            print(f"      eval set: {len(cases)} of {settings.eval_items} cases. "
+                  f"Re-run --only eval to try again.")
+        warnings = self._check_distribution(by_cat, len(cases))
+        if warnings:
+            result["distribution_warnings"] = warnings
+            for w in warnings:
+                print(f"      eval set: {w}")
+        return result
+
+    @staticmethod
+    def _corpus_block(corpus: dict[str, str]) -> str:
+        """The corpus, trimmed to a character budget, as a prompt section."""
+        if not corpus:
+            return ""
+        per_doc = max(1500, settings.eval_corpus_chars // len(corpus))
+        parts = []
+        for title, text in corpus.items():
+            body = text if len(text) <= per_doc else text[:per_doc] + "\n[...]"
+            parts.append(f"=== {title} ===\n{body}")
+        return (
+            "\n\nThe documents follow. For every factual and multi_hop case, "
+            "take the answer from this text: `expected` must restate the "
+            "figure exactly as the document states it, and `must_cite` must "
+            "use the exact document titles shown between === marks. Do not "
+            "rely on what such documents usually say. If a figure is not in "
+            "the text below, do not ask about it.\n\n" + "\n\n".join(parts)
+        )
+
+    def _check_distribution(self, by_cat: dict[str, int], total: int) -> list[str]:
+        """Warn when the model ignored the requested category mix.
+
+        The Data Sourcing Guide promises a specific distribution per domain.
+        Nothing enforced it in v1.0.0, so a model that returned twenty factual
+        questions produced an eval set that looked complete and tested nothing.
+        """
+        problems: list[str] = []
+        if total == 0:
+            return ["no cases generated"]
+
+        for cat in self.required_eval_categories:
+            if by_cat.get(cat, 0) == 0:
+                problems.append(
+                    f"no '{cat}' cases -- the guide expects some; "
+                    f"re-run `--only eval` or add them by hand"
+                )
+
+        factual = by_cat.get("factual", 0)
+        if factual / total > 0.65:
+            problems.append(
+                f"{factual}/{total} cases are 'factual'; the model likely ignored "
+                f"the requested mix. A set this shape will not surface guardrail "
+                f"or grounding failures."
+            )
+        return problems
+
