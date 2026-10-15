@@ -1,0 +1,18 @@
+services:
+  plantguard-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: plantguard-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - plantguard-data:/app/data
+      - plantguard-runtime:/app/runtime
+    restart: unless-stopped
+
+volumes:
+  plantguard-data:
+  plantguard-runtime:

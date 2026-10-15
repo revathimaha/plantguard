@@ -1,5 +1,4 @@
 from langgraph.graph import StateGraph, START, END
-
 from src.plantguard.m5.state import PlantGuardState
 from src.plantguard.m5.nodes import (
     intake_node,
@@ -8,8 +7,6 @@ from src.plantguard.m5.nodes import (
     safety_routing_node,
     human_approval_node
 )
-
-
 
 def route_after_safety(state: PlantGuardState) -> str:
     """Pure routing function: decide which path to take."""

@@ -5,3 +5,14 @@ reportlab>=4.0
 faker>=25.0
 python-dotenv>=1.0.1
 rank-bm25>=0.2.2
+
+# PlantGuard runtime and API
+fastapi
+uvicorn[standard]
+fastmcp
+langgraph
+langgraph-checkpoint-sqlite
+langchain-google-genai
+langfuse
+qdrant-client
+sentence-transformers
