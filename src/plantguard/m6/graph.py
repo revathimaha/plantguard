@@ -1,4 +1,5 @@
 import asyncio
+import re
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
 from langgraph.types import interrupt
@@ -16,16 +17,54 @@ from src.plantguard.m6.manual_rag_agent import manual_rag_agent
 from src.plantguard.observability.tracing import traced_node
 MAX_REVISIONS = 2
 
+PROCUREMENT_AUTO_APPROVAL_LIMIT = 200_000
 
-def initialize_revision_state(state: dict) -> dict:
-    return {
-        "revision_count": state.get("revision_count", 0),
-    }
+
+def detect_purchase_amount(text: str) -> int | None:
+    """Extract an explicitly stated purchase amount in rupees."""
+    text = text.replace(",", "").replace("₹", " ")
+    patterns = [
+        r"\b(\d+(?:\.\d+)?)\s*(?:rupees?|rs\.?)\b",
+        r"\b(\d+(?:\.\d+)?)\s*(?:rupees?)\b",
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            return int(float(match.group(1)))
+
+    return None
+
 
 def route_after_recommendation(state: dict) -> str:
-    """Route reviewed recommendations, allowing at most two revisions."""
+    """Route reviewed recommendations, enforcing procurement controls."""
+
+    recommendation = state.get("recommendation") or {}
+    refusal = (
+        recommendation.get("refusal", {})
+        if isinstance(recommendation, dict)
+        else {}
+    )
+    if refusal.get("refused") is True:
+        return "safety_reviewer"    
     if state.get("error"):
         return "safety_reviewer"
+
+    event = state.get("event") or {}
+    raw_text = str(event.get("raw_text", ""))
+    amount = detect_purchase_amount(raw_text)
+
+    purchase_intent = bool(re.search(
+        r"\b(purchase order|purchase|buy|procure|order|raise a po|po)\b",
+        raw_text,
+        re.IGNORECASE,
+    ))
+
+    # Fail closed: an explicit purchase request with an amount above the
+    # automatic approval threshold must go to human review.
+    if purchase_intent and amount is not None:
+        if amount > PROCUREMENT_AUTO_APPROVAL_LIMIT:
+            return "safety_reviewer"
 
     review = state.get("recommendation_review") or {}
 
@@ -38,6 +77,13 @@ def route_after_recommendation(state: dict) -> str:
         return "revise_recommendation"
 
     return "safety_reviewer"
+
+
+def initialize_revision_state(state: dict) -> dict:
+    return {
+        "revision_count": state.get("revision_count", 0),
+    }
+
 
 
 def revise_recommendation_node(state: dict) -> dict:
@@ -63,9 +109,22 @@ def revise_recommendation_node(state: dict) -> dict:
     }
 
 def route_after_safety_review(state: dict) -> str:
+    
+    recommendation = state.get("recommendation") or {}
+    refusal = (
+        recommendation.get("refusal", {})
+        if isinstance(recommendation, dict)
+        else {}
+    )
+
+    if refusal.get("refused") is True:
+        return "refuse"
+
     if state.get("approval_required"):
         return "human_review"
+
     return "finish"
+
 
 
 def human_review_node(state: dict) -> dict:
@@ -98,6 +157,39 @@ def human_review_node(state: dict) -> dict:
             "supervisor: human rejected case; no maintenance action executed"
         ],
     }
+
+
+
+def refuse_node(state: dict) -> dict:
+    """End the workflow after an explicit refusal; authorize no action."""
+
+    recommendation = state.get("recommendation") or {}
+    refusal = (
+        recommendation.get("refusal", {})
+        if isinstance(recommendation, dict)
+        else {}
+    )
+
+    if refusal.get("refused") is not True:
+        return {
+            "status": "error",
+            "approval_status": "not_authorized",
+            "approval_required": True,
+            "error": "Refusal node reached without an explicit refusal.",
+            "audit_log": [
+                "supervisor: invalid refusal state; no action authorized"
+            ],
+        }
+
+    return {
+        "status": "refused",
+        "approval_status": "refused",
+        "approval_required": False,
+        "audit_log": [
+            "supervisor: explicit refusal recorded; no action authorized"
+        ],
+    }
+
 
 
 def finish_node(state: dict) -> dict:
@@ -148,6 +240,7 @@ def build_graph(checkpointer=None):
         "initialize_revision_state",
         traced_node("initialize_revision_state", initialize_revision_state),
     )
+    builder.add_node("refuse", traced_node("refuse", refuse_node))
     builder.add_node("finish", traced_node("finish", finish_node))
     builder.add_node("human_review", human_review_node)
     builder.add_node("procurement", procurement_sync)
@@ -177,11 +270,12 @@ def build_graph(checkpointer=None):
         "safety_reviewer",
         route_after_safety_review,
         {
+            "refuse": "refuse",
             "human_review": "human_review",
             "finish": "finish",
         },
     )
-
+    builder.add_edge("refuse", END)
     builder.add_edge("human_review", END)
     builder.add_edge("finish", END)
 

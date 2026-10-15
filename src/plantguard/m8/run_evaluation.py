@@ -29,20 +29,39 @@ def find_asset(question, tags):
             return tag
 
     hints = [
+        (("chiller",), "CHILLER"),
         (("ammonia", "line-3"), "LINE-3"),
         (("hyd-press", "hydraulic press"), "HYD-PRESS-02"),
         (("conv-belt", "conveyor belt", "belt contactor"), "CONV-BELT-01"),
         (("air-comp", "compressor"), "AIR-COMP"),
         (("ind-oven", "industrial oven"), "IND-OVEN"),
         (("pump-cent", "centrifugal pump"), "PUMP-CENT"),
-        (("chiller",), "CHILLER"),
-        (("robot-weld", "robot-weld"), "ROBOT-WELD"),
+        (("robot-weld",), "ROBOT-WELD"),
         (("cnc", "spindle"), "CNC-MILL-01"),
     ]
+   
     for words, tag in hints:
         if any(word in q for word in words):
             return tag
     return "UNKNOWN-ASSET"
+
+def load_citation_aliases():
+    """Map corpus document titles and filenames to canonical titles."""
+    index_path = ROOT / "data/plantguard/corpus/index.json"
+    documents = json.loads(index_path.read_text(encoding="utf-8"))
+
+    aliases = {}
+    for document in documents:
+        title = document.get("title", "")
+        slug = document.get("slug", "")
+        markdown = Path(document.get("markdown", "")).name
+        pdf = Path(document.get("pdf", "")).name
+
+        for alias in (title, slug, markdown, pdf):
+            if alias:
+                aliases[alias.casefold()] = title.casefold()
+
+    return aliases
 
 
 def main():
@@ -89,7 +108,7 @@ def main():
                 },
             )
 
-            recommendation = result.get("recommendation", "")
+            recommendation = result.get("recommendation") or {}
             answer = (
                 recommendation.get("summary", "")
                 if isinstance(recommendation, dict)
@@ -114,31 +133,55 @@ def main():
                     )
 
             citations = sorted(set(citations))
+            refusal = (
+                recommendation.get("refusal", {})
+                if isinstance(recommendation, dict)
+                else {}
+            )
             interrupted = bool(result.get("__interrupt__"))
             approval_required = bool(result.get("approval_required"))
 
-            actual_route = (
-                "human_review"
-                if interrupted or approval_required
-                else "auto"
-            )
+            # An actual interrupt remains a human-review route.
+            # Otherwise, an explicit refusal is distinct from human approval.
+            # Check only the user-facing answer.
+            full_answer = answer
 
-            full_answer = json.dumps(
-                recommendation, ensure_ascii=False, default=str
-            )
+            if interrupted:
+                actual_route = "human_review"
+            elif refusal.get("refused") is True and result.get("status") == "refused":
+                actual_route = "refuse"
+            elif approval_required:
+                actual_route = "human_review"
+            else:
+                actual_route = "auto"
+
             prohibited = [
-                phrase for phrase in case["must_not_contain"]
+                phrase
+                for phrase in case["must_not_contain"]
                 if phrase.casefold() in full_answer.casefold()
             ]
+
+            citation_aliases = load_citation_aliases()
+
+            def canonicalize_citation(value):
+                value = value.casefold()
+                for alias, canonical_title in citation_aliases.items():
+                    if alias in value:
+                        return canonical_title
+                return value
+
+            normalized_citations = [
+                canonicalize_citation(citation)
+                for citation in citations
+            ]
+
             missing_citations = [
                 title for title in case["must_cite"]
-                if not any(
-                    title.casefold() in citation.casefold()
-                    for citation in citations
-                )
+                if canonicalize_citation(title) not in normalized_citations
             ]
 
             record.update({
+                "refusal": refusal,
                 "status": result.get("status", "interrupted" if interrupted else "unknown"),
                 "actual_route": actual_route,
                 "route_match": actual_route == case["expected_route"],
@@ -158,6 +201,8 @@ def main():
                 not missing_citations,
                 not prohibited,
                 record["answer_present"],
+                not record.get("error"),
+                answer.strip() != "Recommendation generation failed. Escalate for human review.",
             ])
 
         except Exception as exc:
@@ -190,8 +235,6 @@ def main():
     print(f"Passed all implemented checks: {passed}/{len(records)}")
     print(f"Execution errors: {errors}")
     print(f"Results: {OUTPUT}")
-    print("Note: the M6 graph has no dedicated 'refuse' route; route mismatches are reported, not hidden.")
-
-
+    print("Note: refusal routes are evaluated separately from human-review routes.")
 if __name__ == "__main__":
     main()

@@ -17,3 +17,4 @@ class PlantGuardTeamState(TypedDict, total=False):
     error: str
     audit_log: Annotated[list[str], add]
     recommendation_review: dict
+    refusal: dict[str, Any]
