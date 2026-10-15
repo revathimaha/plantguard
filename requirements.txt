@@ -16,3 +16,4 @@ langchain-google-genai
 langfuse
 qdrant-client
 sentence-transformers
+pypdf

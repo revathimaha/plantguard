@@ -31,4 +31,5 @@ dependencies = [
     "langfuse",
     "qdrant-client",
     "sentence-transformers",
+    "pypdf",
 ]
