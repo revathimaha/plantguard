@@ -1,5 +1,5 @@
 import json
-
+import os
 from pydantic import ValidationError
 from plantguard.tools.sensor_history import get_sensor_history
 from plantguard.tools.downtime_cost import calculate_downtime_cost
@@ -97,9 +97,17 @@ def main():
         "data/plantguard/intake/records.jsonl"
     )
 
+    model = os.environ.get("PLANTGUARD_LLM_MODEL") or "groq/openai/gpt-oss-20b"
+    api_key = os.environ.get("PLANTGUARD_LLM_API_KEY") or os.environ.get(
+        "GROQ_API_KEY"
+    )
+    if not api_key:
+        raise RuntimeError(
+            "Set GROQ_API_KEY (or PLANTGUARD_LLM_API_KEY) in the environment."
+        )
     client = LLMClient(
-        model="groq/openai/gpt-oss-20b",
-        api_key="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",
+        model=model,
+        api_key=api_key,
     )
 
     parser = IntakeParser(client)
