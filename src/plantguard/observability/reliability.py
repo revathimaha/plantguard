@@ -52,6 +52,77 @@ def with_fallback(
         return fallback()
 
 
+import asyncio
+from collections.abc import Awaitable
+
+
+import asyncio
+from collections.abc import Awaitable
+
+
+async def retry_async_with_backoff(
+    operation: Callable[[], Awaitable[T]],
+    *,
+    max_attempts: int = 3,
+    base_delay: float = 0.5,
+    retryable_exceptions: tuple[type[Exception], ...] = (
+        TimeoutError,
+        ConnectionError,
+    ),
+    sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
+) -> T:
+    """Retry a transient async operation with bounded exponential backoff."""
+
+    if max_attempts < 1:
+        raise ValueError("max_attempts must be at least 1")
+    if base_delay < 0:
+        raise ValueError("base_delay cannot be negative")
+
+    for attempt in range(max_attempts):
+        try:
+            return await operation()
+        except retryable_exceptions:
+            if attempt == max_attempts - 1:
+                raise
+            await sleep(base_delay * (2 ** attempt))
+
+    raise RuntimeError("Unreachable retry state")
+
+
+async def resilient_async_call(
+    operation: Callable[[], Awaitable[T]],
+    fallback: Callable[[], Awaitable[T]],
+    *,
+    circuit: "CircuitBreaker",
+    max_attempts: int = 3,
+    base_delay: float = 0.5,
+    retryable_exceptions: tuple[type[Exception], ...] = (
+        TimeoutError,
+        ConnectionError,
+    ),
+    sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
+) -> T:
+    """Compose circuit breaking, bounded async retries, and async fallback."""
+
+    try:
+        circuit.raise_if_open()
+        result = await retry_async_with_backoff(
+            operation,
+            max_attempts=max_attempts,
+            base_delay=base_delay,
+            retryable_exceptions=retryable_exceptions,
+            sleep=sleep,
+        )
+    except CircuitOpenError:
+        return await fallback()
+    except retryable_exceptions:
+        circuit.record_failure()
+        return await fallback()
+
+    circuit.record_success()
+    return result
+
+
 
 
 from enum import Enum
@@ -98,6 +169,30 @@ class CircuitBreaker:
     def state(self) -> CircuitState:
         with self._lock:
             return self._state
+
+    def raise_if_open(self) -> None:
+        with self._lock:
+            if self._state == CircuitState.OPEN:
+                elapsed = self._clock() - (self._opened_at or 0.0)
+                if elapsed < self.reset_timeout:
+                    raise CircuitOpenError("Circuit is open")
+                self._state = CircuitState.HALF_OPEN
+
+    def record_failure(self) -> None:
+        with self._lock:
+            self._failures += 1
+            if (
+                self._state == CircuitState.HALF_OPEN
+                or self._failures >= self.failure_threshold
+            ):
+                self._state = CircuitState.OPEN
+                self._opened_at = self._clock()
+
+    def record_success(self) -> None:
+        with self._lock:
+            self._failures = 0
+            self._state = CircuitState.CLOSED
+            self._opened_at = None
 
     def call(
         self,
