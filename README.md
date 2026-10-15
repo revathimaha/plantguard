@@ -59,11 +59,18 @@ environment.
 
 ## Run the milestones
 
-    python run_m1.py       # intake parsing over sample records
-    python run_m3.py       # indexing and maintenance-history lookup
-    python run_m4.py       # hybrid retrieval and retrieval evaluation
-    python run_m5.py       # workflow run up to the human interrupt
-    python resume_m5.py    # resume the interrupted M5 run from the checkpoint
+Each milestone has a top-level runner. M1-M6 and M8 call the live agents and
+need the environment keys above; M7 runs offline and needs no key.
+
+    python run_m1.py       # M1: intake parsing over sample records
+    python run_m2.py       # M2: single tool-enabled maintenance agent
+    python run_m3.py       # M3: indexing and maintenance-history lookup
+    python run_m4.py       # M4: hybrid retrieval and retrieval evaluation
+    python run_m5.py       # M5: workflow run up to the human interrupt
+    python resume_m5.py    # M5: resume the interrupted run from the checkpoint
+    python run_m6.py       # M6: multi-agent team with MCP tools
+    python run_m7.py       # M7: tracing and reliability (offline, no key)
+    python run_m8.py       # M8: 20-case behavioral evaluation
 
 ## Run the API
 Start the local API:
