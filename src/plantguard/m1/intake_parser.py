@@ -47,7 +47,25 @@ class IntakeParser:
 
         return valid_events, failed_records
 
+    LABEL_FIELDS = (
+        "ground_truth",
+        "expected",
+        "expected_route",
+        "must_cite",
+        "must_not_contain",
+        "label",
+        "labels",
+    )
+
+    def _strip_labels(self, record: dict) -> dict:
+        return {
+            key: value
+            for key, value in record.items()
+            if key not in self.LABEL_FIELDS
+        }
+
     def parse(self, record: dict) -> MaintenanceEvent:
+        record = self._strip_labels(record)
         prompt = f"""
 Parse the following maintenance event into a JSON object.
 

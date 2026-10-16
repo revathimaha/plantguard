@@ -351,33 +351,16 @@ def maintenance_agent(state: dict) -> dict:
             state.get("revision_feedback", []),
         )
 
-        for attempt in range(2):
-            try:
-                recommendation = client.complete_json(prompt)
-                break
+        required_fields = {
+            "summary",
+            "evidence",
+            "possible_causes",
+            "recommended_next_steps",
+            "evidence_gaps",
+            "human_review_recommended",
+        }
 
-            except RateLimitError:
-                if attempt == 1:
-                    raise
-
-                print("Groq rate limit reached; waiting 15 seconds before retry.")
-                time.sleep(15)
-
-            except BadRequestError as exc:
-                message = str(exc).casefold()
-
-                # Retry only the specific JSON-generation failure.
-                is_json_error = (
-                    "json_validate_failed" in message
-                    or "failed to generate json" in message
-                )
-
-                if attempt == 1 or not is_json_error:
-                    raise
-
-                print("Groq returned invalid JSON; retrying once with stricter instructions.")
-
-                prompt += """
+        strict_instructions = """
 
                     STRICT OUTPUT REQUIREMENTS FOR THIS RETRY:
                     Return exactly one complete, valid JSON object.
@@ -389,21 +372,67 @@ def maintenance_agent(state: dict) -> dict:
                     recommended_next_steps, evidence_gaps, human_review_recommended.
                     """
 
-        required_fields = {
-            "summary",
-            "evidence",
-            "possible_causes",
-            "recommended_next_steps",
-            "evidence_gaps",
-            "human_review_recommended",
-        }
-        if not isinstance(recommendation, dict) or not required_fields.issubset(
-            recommendation
-        ):
-            raise ValueError("LLM response does not match recommendation schema")
+        max_attempts = 3
+        recommendation = None
 
-        if not isinstance(recommendation["human_review_recommended"], bool):
-            raise ValueError("human_review_recommended must be boolean")
+        for attempt in range(max_attempts):
+            is_last = attempt == max_attempts - 1
+            try:
+                recommendation = client.complete_json(prompt)
+
+                # Validate inside the loop so a syntactically valid but
+                # schema-incomplete response is retried, not failed outright.
+                if not isinstance(recommendation, dict) or not required_fields.issubset(
+                    recommendation
+                ):
+                    if is_last:
+                        raise ValueError(
+                            "LLM response does not match recommendation schema"
+                        )
+                    print(
+                        "Recommendation JSON missing required fields; "
+                        "retrying with stricter instructions."
+                    )
+                    if strict_instructions not in prompt:
+                        prompt += strict_instructions
+                    continue
+
+                if not isinstance(recommendation["human_review_recommended"], bool):
+                    if is_last:
+                        raise ValueError(
+                            "human_review_recommended must be boolean"
+                        )
+                    print(
+                        "Recommendation human_review_recommended not boolean; "
+                        "retrying with stricter instructions."
+                    )
+                    if strict_instructions not in prompt:
+                        prompt += strict_instructions
+                    continue
+
+                break
+
+            except RateLimitError:
+                if is_last:
+                    raise
+
+                print("Groq rate limit reached; waiting 15 seconds before retry.")
+                time.sleep(15)
+
+            except BadRequestError as exc:
+                message = str(exc).casefold()
+
+                is_json_error = (
+                    "json_validate_failed" in message
+                    or "failed to generate json" in message
+                )
+
+                if is_last or not is_json_error:
+                    raise
+
+                print("Groq returned invalid JSON; retrying with stricter instructions.")
+                if strict_instructions not in prompt:
+                    prompt += strict_instructions
 
     except Exception as exc:
         print("MAINTENANCE ERROR:", repr(exc))

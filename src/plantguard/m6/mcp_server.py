@@ -4,7 +4,7 @@ import sys
 
 from fastmcp import FastMCP
 from pathlib import Path
-import uuid
+import hashlib
 from datetime import datetime, timezone
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -15,6 +15,29 @@ from src.plantguard.tools.inventory import check_spare_parts
 from src.plantguard.tools.sensor_history import get_sensor_history
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
+MOCK_PO_LEDGER = PROJECT_ROOT / "runtime/mock_api/purchase_orders.json"
+
+
+def _order_key(part_number: str, quantity: int, approval_reference: str) -> str:
+    basis = f"{approval_reference.strip()}|{part_number}|{quantity}"
+    return hashlib.sha1(basis.encode("utf-8")).hexdigest()
+
+
+def _load_po_ledger() -> dict:
+    if not MOCK_PO_LEDGER.exists():
+        return {}
+    try:
+        return json.loads(MOCK_PO_LEDGER.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def _save_po_ledger(ledger: dict) -> None:
+    MOCK_PO_LEDGER.parent.mkdir(parents=True, exist_ok=True)
+    MOCK_PO_LEDGER.write_text(
+        json.dumps(ledger, indent=2),
+        encoding="utf-8",
+    )
 
 mcp = FastMCP(
     name="PlantGuard Inventory and Maintenance",
@@ -67,9 +90,27 @@ def create_mock_purchase_order(
             "part_number": part_number,
         }
 
-    return {
+    key = _order_key(part_number, quantity, approval_reference)
+    ledger = _load_po_ledger()
+
+    existing = ledger.get(key)
+    if existing is not None:
+        return {
+            "created": False,
+            "status": "idempotent_replay",
+            "mock_order_id": existing["mock_order_id"],
+            "part_number": part_number,
+            "quantity": quantity,
+            "approval_reference": approval_reference.strip(),
+            "created_at": existing["created_at"],
+            "message": (
+                "Existing simulated order returned; duplicate not created."
+            ),
+        }
+
+    order = {
         "created": True,
-        "mock_order_id": f"MOCK-PO-{uuid.uuid4().hex[:8].upper()}",
+        "mock_order_id": f"MOCK-PO-{key[:8].upper()}",
         "part_number": part_number,
         "quantity": quantity,
         "status": "simulated_order_created",
@@ -77,6 +118,14 @@ def create_mock_purchase_order(
         "created_at": datetime.now(timezone.utc).isoformat(),
         "message": "Simulated order only; no real purchase was placed.",
     }
+
+    ledger[key] = {
+        "mock_order_id": order["mock_order_id"],
+        "created_at": order["created_at"],
+    }
+    _save_po_ledger(ledger)
+
+    return order
 
 
 

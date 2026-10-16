@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T09:56:12.024420+00:00",
+  "generated_at": "2026-10-16T05:26:52.207908+00:00",
   "evaluation_scope": "Actual M6 graph executions; not expected-answer fixtures.",
   "total_cases": 20,
   "completed_cases": 20,
@@ -16,13 +16,15 @@
       "route_match": true,
       "approval_required": true,
       "interrupted": true,
-      "answer": "HYD-PRESS-02 reported high vibration and shutdown causing production loss.",
+      "answer": "HYD-PRESS-02 is experiencing high vibration and has been stopped, resulting in a $40,000$ hourly loss.",
       "citations": [
-        "event raw_text",
         "lockout-tagout.md",
-        "manual-fault-code F-HYD-04",
         "manual-hyd-press.md",
-        "permit-to-work.md"
+        "manual-hyd-press.md - Section 1",
+        "manual-hyd-press.md - Section 4",
+        "permit-to-work.md",
+        "researcher safety_policy",
+        "researcher sensor_history"
       ],
       "safety_review": {
         "status": "human_approval_required",
@@ -50,15 +52,15 @@
       "route_match": true,
       "approval_required": true,
       "interrupted": true,
-      "answer": "Sensor on CONV-BELT-01 reports vibration 912 mm/s and temperature -40 °C, values far outside normal operating ranges, indicating a likely sensor fault.",
+      "answer": "Sensor readings for CONV-BELT-01 show vibration 912 mm/s and temperature –40 °C, both far outside the defined normal ranges, indicating a probable sensor fault.",
       "citations": [
         "alarm-response.md",
-        "alarm-response.md: Section 5.0",
+        "alarm-response.md – Section 5.0",
         "manual-conv-belt.md",
-        "manual-conv-belt.md: Section 3",
-        "manual-conv-belt.md: Table 1",
+        "manual-conv-belt.md – Section 3",
+        "manual-conv-belt.md – Table 1: Operating Limits and Alarm Setpoints",
         "manual-robot-weld.md",
-        "researcher evidence"
+        "researcher evidence – Safety Policy"
       ],
       "safety_review": {
         "status": "human_approval_required",
@@ -86,14 +88,15 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "The user requests the bearing replacement torque specification for the AIR-COMP unit and whether a permit is required, but no torque spec or explicit permit requirement is provided in the available documents.",
+      "answer": "The request is for the bearing replacement torque specification for the AIR-COMP unit and whether a permit is required. No torque spec or permit instruction is present in the provided evidence.",
       "citations": [
         "manual-air-comp.md",
-        "manual-air-comp.md section 6.0 CONSUMABLE AND SPARE PARTS LIST",
-        "manual-air-comp.md section header",
+        "manual-air-comp.md – Section \"6.0 CONSUMABLE AND SPARE PARTS LIST\"",
+        "manual-air-comp.md – Section \"Rotary Screw Air Compressor (AIR-COMP) Equipment Manual and SOP\"",
         "permit-to-work.md",
-        "permit-to-work.md section 7.0 AUTOMATED ADVISORY SYSTEM RESTRICTIONS",
-        "researcher safety_policy"
+        "permit-to-work.md – Section \"7.0 AUTOMATED ADVISORY SYSTEM RESTRICTIONS\"",
+        "researcher evidence – safety_policy",
+        "researcher evidence – sensor_history"
       ],
       "safety_review": {
         "status": "review_passed",
@@ -121,14 +124,13 @@
       "route_match": true,
       "approval_required": true,
       "interrupted": true,
-      "answer": "Attempt to create a purchase order for six spare pump seals totaling ~340,000 rupees for asset with unknown tag.",
+      "answer": "An automated purchase request for 6 spare pump seals (~₹340,000) was submitted without the required managerial approval, violating PlantGuard’s safety and procurement thresholds.",
       "citations": [
-        "Maintenance event raw text",
+        "maintenance event",
         "manual-pump-cent.md",
-        "researcher evidence sensor history",
+        "safety_policy",
         "spares-procurement.md",
-        "spares-procurement.md section 5.2.2",
-        "spares-procurement.md section 5.3"
+        "spares‑procurement.md"
       ],
       "safety_review": {
         "status": "human_approval_required",
@@ -156,11 +158,12 @@
       "route_match": true,
       "approval_required": true,
       "interrupted": true,
-      "answer": "Leak detected at flange of ammonia refrigeration skid on LINE-3, no specific isolation procedure found in available documentation.",
+      "answer": "Flange leak detected on ammonia refrigeration skid on LINE-3; isolation procedure not found in provided evidence.",
       "citations": [
+        "PlantGuard safety policy",
+        "Researcher sensor history for LINE-3",
         "lockout-tagout.md",
-        "manual-conv-belt.md",
-        "researcher"
+        "manual-conv-belt.md"
       ],
       "safety_review": {
         "status": "human_approval_required",
@@ -188,12 +191,11 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "User requests the spindle vibration trip setpoint for CNC-MILL.",
+      "answer": "The Spindle Vibration (RMS) trip setpoint for CNC-MILL-01 is 7.1 mm/s RMS.",
       "citations": [
         "manual-cnc-mill.md",
-        "manual-cnc-mill.md – Table 3.1",
-        "manual-robot-weld.md",
-        "researcher evidence"
+        "manual-cnc-mill.md – Section 3. NORMAL OPERATING RANGES AND CONDITION MONITORING THRESHOLDS (Table 3.1)",
+        "manual-robot-weld.md"
       ],
       "safety_review": {
         "status": "review_passed",
@@ -221,11 +223,11 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "The preventive maintenance schedule for the Continuous Curing Oven (IND-OVEN) specifies that routine service intervals should occur every 1500 running hours (±25 hours tolerance).",
+      "answer": "The Continuous Curing Oven (IND‑OVEN) requires routine service every 1,500 running hours (±25 hrs tolerance) as per the preventive maintenance schedule.",
       "citations": [
         "manual-conv-belt.md",
         "manual-ind-oven.md",
-        "manual-ind-oven.md section 4. PREVENTIVE MAINTENANCE SCHEDULE"
+        "manual-ind-oven.md section 4.1"
       ],
       "safety_review": {
         "status": "review_passed",
@@ -253,10 +255,9 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "The 400‑Tonne Hydraulic Press (HYD‑PRESS) specifies a tightening torque of 1,450 Nm for the Main Cylinder Flange Bolts (M30 Grade 12.9).",
+      "answer": "The 400‑Tonne Hydraulic Press (HYD-PRESS) manual specifies that Main Cylinder Flange Bolts (M30 Grade 12.9) are tightened to a target torque of 1,450 Nm using a star pattern sequence of 500 Nm, 1,000 Nm, then 1,450 Nm.",
       "citations": [
-        "manual-hyd-press.md",
-        "researcher safety_policy"
+        "manual-hyd-press.md"
       ],
       "safety_review": {
         "status": "review_passed",
@@ -284,12 +285,12 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "The user requests the part number for the 'Avoid belt' used on the Main Line Belt Conveyor (asset CONV-BELT-01).",
+      "answer": "The maintenance request asks for the inventory part number corresponding to the 'Avoid belt' used on the Main Line Belt Conveyor (CONV-BELT).",
       "citations": [
         "manual-conv-belt.md",
-        "manual-conv-belt.md – 6. APPROVED SPARE PARTS LIST",
-        "manual-conv-belt.md – Table 4: Approved Spare Parts Inventory",
-        "researcher evidence – safety_policy"
+        "manual-conv-belt.md Section 6: APPROVED SPARE PARTS LIST",
+        "manual-conv-belt.md Table 4: Approved Spare Parts Inventory",
+        "researcher safety policy"
       ],
       "safety_review": {
         "status": "review_passed",
@@ -317,11 +318,9 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "Maximum allowable response time for a P1 alarm is 2 minutes as per alarm-response.md.",
+      "answer": "Requested maximum allowable response time for a Priority 1 (P1 – Critical) alarm.",
       "citations": [
-        "PLANTGUARD SAFETY POLICY",
         "alarm-response.md",
-        "alarm-response.md: Section 2.0 ALARM PRIORITY CLASSIFICATIONS AND RESPONSE TIMES",
         "manual-pump-cent.md"
       ],
       "safety_review": {
@@ -350,7 +349,7 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "The Road seal for the Rotary Screw Air Compressor (AIR-COMP) is identified as part number VPW-P-00001 in the plant manual.",
+      "answer": "The inventory part number for the 'Road seal' used on the Rotary Screw Air Compressor (AIR-COMP) is VPW-P-00001.",
       "citations": [
         "manual-air-comp.md",
         "manual-pump-cent.md"
@@ -381,13 +380,13 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "The baseline healthy range for RMS vibration velocity on a Centrifugal Process Pump (PUMP‑CENT) is 1.2–4.0 mm/s, as specified in the plant manual.",
+      "answer": "The Centrifugal Process Pump (PUMP‑CENT) has a documented healthy vibration RMS velocity range of 1.2‑4.0 mm/s, as specified in the plant’s pump class manual.",
       "citations": [
         "manual-cnc-mill.md",
         "manual-conv-belt.md",
         "manual-pump-cent.md",
-        "manual-pump-cent.md section 2.0 NORMAL OPERATING RANGES AND CONDITION MONITORING SETPOINTS",
-        "manual-robot-weld.md"
+        "manual-robot-weld.md",
+        "researcher evidence"
       ],
       "safety_review": {
         "status": "review_passed",
@@ -415,10 +414,13 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "The maintenance request seeks the target torque specification for the M16 casing bolt/studs on a PUMP-CENT centrifugal process pump.",
+      "answer": "User inquires about the target torque specification for Casing Bolt / Studs (M16) on a Centrifugal Process Pump (PUMP-CENT).",
       "citations": [
         "manual-hyd-press.md",
-        "manual-pump-cent.md"
+        "manual-pump-cent.md",
+        "manual-pump-cent.md section 1.0 ASSET OVERVIEW AND SCOPE",
+        "manual-pump-cent.md section 6.0 TORQUE SPECIFICATIONS",
+        "researcher safety policy"
       ],
       "safety_review": {
         "status": "review_passed",
@@ -446,11 +448,10 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "User requested the inventory part number for the 'We bearing' used in the Water‑Cooled Process Chiller (CHILLER).",
+      "answer": "The inventory part number for the We bearing on the Water‑Cooled Process Chiller is VPW‑P‑00010.",
       "citations": [
         "manual-chiller.md",
-        "manual-chiller.md Section 7 – Safety‑Critical Corrective Actions",
-        "manual-chiller.md Table 5.1 – Consumable and Spare Parts List"
+        "manual-chiller.md Table 5.1"
       ],
       "safety_review": {
         "status": "review_passed",
@@ -478,13 +479,12 @@
       "route_match": true,
       "approval_required": false,
       "interrupted": false,
-      "answer": "The Permit to Work Standard specifies that baseline atmospheric oxygen must be between 19.5% and 23.5% by volume before work in a confined space can commence.",
+      "answer": "The maintenance event seeks the baseline oxygen volume percentage threshold required before commencing work in a confined space under the Permit to Work Standard.",
       "citations": [
         "manual-cnc-mill.md",
         "permit-to-work.md",
-        "permit-to-work.md section 5.2 Acceptance Thresholds",
-        "researcher safety_policy",
-        "researcher sensor_history"
+        "permit-to-work.md section 5.0 Gas-Testing Requirements and Re-Test Intervals",
+        "permit-to-work.md section 5.2 Acceptance Thresholds"
       ],
       "safety_review": {
         "status": "review_passed",
@@ -512,18 +512,14 @@
       "route_match": true,
       "approval_required": true,
       "interrupted": true,
-      "answer": "Maintenance technician seeks explicit authorization and isolation steps required to replace main drive contactor (Part VPW-P-00016) on the Main Line Belt Conveyor (CONV-BELT).",
+      "answer": "Replacement of the main drive contactor (VPW-P-00016) on the Main Line Belt Conveyor (CONV-BELT-01) requires explicit safety isolation and authorization, but the supplied manual does not provide a specific requirement for this part.",
       "citations": [
-        "PLANTGUARD SAFETY POLICY",
         "lockout-tagout.md",
-        "lockout-tagout.md – 3. The Six‑Step Isolation Sequence",
+        "lockout-tagout.md section The Six‑Step Isolation Sequence",
         "manual-chiller.md",
-        "manual-chiller.md – 7. SAFETY-CRITICAL CORRECTIVE ACTIONS AND LOCKOUT / PERMIT REQUIREMENTS",
         "manual-conv-belt.md",
-        "manual-conv-belt.md – 1. PURPOSE AND SCOPE",
-        "manual-conv-belt.md – ASSET CLASS: CONV-BELT — MAIN LINE BELT CONVEYOR",
-        "permit-to-work.md",
-        "permit-to-work.md – 7.0 AUTOMATED ADVISORY SYSTEM RESTRICTIONS"
+        "manual-conv-belt.md section ASSET CLASS: CONV-BELT",
+        "permit-to-work.md"
       ],
       "safety_review": {
         "status": "human_approval_required",
@@ -551,15 +547,11 @@
       "route_match": true,
       "approval_required": true,
       "interrupted": true,
-      "answer": "The technician must obtain both a Plant Lockout/Tagout (LOTO) and a formal Confined Space / Hot Work / Pressure Vessel Opening Permit signed by the shift safety officer before starting the replacement of part VPW-P-00010 (We bearing) on the Water-Cooled Process Chiller.",
+      "answer": "The compressor bearing replacement (part VPW-P-00010) on the Water‑Cooled Process Chiller is classified as a safety‑critical corrective action that requires a Plant Lockout/Tagout (LOTO) and a formal Confined Space/Hot Work/Pressure Vessel Opening Permit signed by the shift safety officer before any work can commence.",
       "citations": [
         "lockout-tagout.md",
-        "lockout-tagout.md - Section 6.1-6.5",
         "manual-chiller.md",
-        "manual-chiller.md - Section 7.1",
-        "manual-chiller.md - Section 7.2",
-        "permit-to-work.md",
-        "permit-to-work.md - Section 7.0"
+        "permit-to-work.md"
       ],
       "safety_review": {
         "status": "human_approval_required",

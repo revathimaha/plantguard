@@ -17,12 +17,16 @@ class PlantGuardRetrievalService:
         corpus_path: str = "data/plantguard/corpus",
         candidate_limit: int = 10,
         final_limit: int = 5,
+        source: str = "markdown",
     ):
         self.candidate_limit = candidate_limit
         self.final_limit = final_limit
 
         loader = PlantGuardDocumentLoader(corpus_path)
-        documents = loader.load_markdown_documents()
+        if source == "pdf":
+            documents = loader.load_pdf_documents()
+        else:
+            documents = loader.load_markdown_documents()
 
         all_chunks = []
 

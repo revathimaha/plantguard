@@ -1,12 +1,20 @@
 import os
+import os
+import sys
 from pathlib import Path
 
 from fastmcp import Client
 
 from src.plantguard.m6.permissions import scoped
+from src.plantguard.observability.reliability import (
+    CircuitBreaker,
+    resilient_async_call,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 MCP_SERVER_PATH = PROJECT_ROOT / "src/plantguard/m6/mcp_server.py"
+
+_SENSOR_MCP_BREAKER = CircuitBreaker(failure_threshold=3, reset_timeout=30.0)
 
 
 async def _collect_evidence(asset_tag: str, limit: int = 10) -> dict:
@@ -15,16 +23,27 @@ async def _collect_evidence(asset_tag: str, limit: int = 10) -> dict:
     async with Client({
         "mcpServers": {
             "plantguard": {
-                "command": os.environ.get(
-                    "PYTHON", str(PROJECT_ROOT / ".venv/bin/python")
-                ),
+                "command": os.environ.get("PYTHON", sys.executable),
                 "args": [str(MCP_SERVER_PATH)],
             }
         }
     }) as client:
-        result = await client.call_tool(
-            "sensor_history_lookup",
-            {"asset_tag": asset_tag, "limit": limit},
+        async def _lookup():
+            return await client.call_tool(
+                "sensor_history_lookup",
+                {"asset_tag": asset_tag, "limit": limit},
+            )
+
+        async def _unavailable():
+            raise RuntimeError(
+                "sensor_history_lookup unavailable after retries/circuit open"
+            )
+
+        result = await resilient_async_call(
+            _lookup,
+            _unavailable,
+            circuit=_SENSOR_MCP_BREAKER,
+            max_attempts=3,
         )
 
         if getattr(result, "is_error", False):

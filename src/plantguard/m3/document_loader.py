@@ -43,6 +43,33 @@ class PlantGuardDocumentLoader:
             })
 
         return documents
+
+    def load_pdf_documents(self) -> list[dict]:
+        from pypdf import PdfReader
+
+        documents = []
+
+        pdf_path = self.corpus_path / "pdf"
+
+        for file_path in sorted(pdf_path.glob("*.pdf")):
+            reader = PdfReader(str(file_path))
+
+            pages = [
+                page.extract_text() or ""
+                for page in reader.pages
+            ]
+            text = "\n\n".join(pages).strip()
+
+            if not text:
+                continue
+
+            documents.append({
+                "source": file_path.name,
+                "file_type": "pdf",
+                "text": text,
+            })
+
+        return documents
     
     def chunk_document(
             self,

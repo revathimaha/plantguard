@@ -1,5 +1,6 @@
 
 import os
+import sys
 from pathlib import Path
 
 from fastmcp import Client
@@ -15,9 +16,7 @@ def _mcp_config() -> dict:
     return {
         "mcpServers": {
             "plantguard": {
-                "command": os.environ.get(
-                    "PYTHON", str(PROJECT_ROOT / ".venv/bin/python")
-                ),
+                "command": os.environ.get("PYTHON", sys.executable),
                 "args": [str(MCP_SERVER_PATH)],
             }
         }

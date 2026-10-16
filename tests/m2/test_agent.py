@@ -1,10 +1,20 @@
+import os
+
 from plantguard.m2.agent import MaintenanceAgent
 
 
 def main():
+    model = os.environ.get("PLANTGUARD_LLM_MODEL") or "groq/openai/gpt-oss-20b"
+    api_key = os.environ.get("PLANTGUARD_LLM_API_KEY") or os.environ.get(
+        "GROQ_API_KEY"
+    )
+    if not api_key:
+        raise RuntimeError(
+            "Set GROQ_API_KEY (or PLANTGUARD_LLM_API_KEY) in the environment."
+        )
     agent = MaintenanceAgent(
-        model="groq/openai/gpt-oss-20b",
-        api_key="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",
+        model=model,
+        api_key=api_key,
     )
     result = agent.run(
         """
