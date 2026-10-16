@@ -1,4 +1,6 @@
 import os
+import os
+import sys
 from pathlib import Path
 
 from fastmcp import Client
@@ -21,9 +23,7 @@ async def _collect_evidence(asset_tag: str, limit: int = 10) -> dict:
     async with Client({
         "mcpServers": {
             "plantguard": {
-                "command": os.environ.get(
-                    "PYTHON", str(PROJECT_ROOT / ".venv/bin/python")
-                ),
+                "command": os.environ.get("PYTHON", sys.executable),
                 "args": [str(MCP_SERVER_PATH)],
             }
         }
