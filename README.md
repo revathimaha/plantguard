@@ -78,12 +78,21 @@ Start the local API:
     python -m uvicorn src.plantguard.api.app:app --host 127.0.0.1 --port 8000
 
 Endpoints:
-- `/health` — basic service health response.
-- `/status` — application status summary of configured component labels.
-- `/docs` — interactive API documentation.
+- `GET /health` — basic service liveness response.
+- `GET /status` — live configuration and dependency readiness (checks env
+  keys and data-asset presence at request time; reports a `ready` flag).
+- `POST /analyze` — run the full multi-agent maintenance workflow on one
+  event; returns the route (`auto` / `human_review` / `refuse`), a grounded
+  answer, citations, and the safety review. Never auto-executes.
+- `GET /docs` — interactive Swagger UI.
 
-The status endpoint reports configured component labels; it is not a live
-health check of every dependency.
+Full request/response schemas and examples are in `docs/api.md`.
+
+Example:
+
+    curl -X POST http://127.0.0.1:8000/analyze \
+      -H "Content-Type: application/json" \
+      -d '{"asset_tag":"VPW-CNC-MILL-03","raw_text":"Spindle vibration rising. What action is recommended?"}'
 
 ## Run with Docker
 Build and start the API with a bundled Qdrant service:

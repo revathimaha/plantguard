@@ -1,4 +1,5 @@
 import json
+import os
 import re
 import time
 from datetime import datetime, timezone
@@ -226,7 +227,15 @@ def main():
             }, indent=2, ensure_ascii=False, default=str),
             encoding="utf-8",
         )
-        time.sleep(1)
+
+        # Pace requests to stay under the LLM provider's tokens-per-minute
+        # limit. Each case is token-heavy (retrieved evidence in the prompt),
+        # so a free-tier run needs a gap between cases to avoid throttling.
+        # Override with EVAL_CASE_DELAY_SECONDS=0 on a higher-rate tier.
+        if index < len(cases):
+            delay = float(os.environ.get("EVAL_CASE_DELAY_SECONDS", "20"))
+            if delay > 0:
+                time.sleep(delay)
 
     passed = sum(record.get("passed", False) for record in records)
     errors = sum(record.get("status") == "error" for record in records)
